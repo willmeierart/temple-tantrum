@@ -1,0 +1,17 @@
+$font-base: sans-serif !default;
+
+@font-face {
+  font-family: 'Verlag-Black';
+  src: url('./Verlag-Black.eot');
+  src: url('./Verlag-Black.woff2') format('woff2'), url('./Verlag-Black.woff') format('woff'), url('./Verlag-Black.ttf') format('truetype'), url('./Verlag-Black.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Verlag-Book';
+  src: url('./Verlag-Book.eot');
+  src: url('./Verlag-Book.woff2') format('woff2'), url('./Verlag-Book.woff') format('woff'), url('./Verlag-Book.ttf') format('truetype'), url('./Verlag-Book.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}

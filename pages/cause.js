@@ -1,14 +1,14 @@
 import AppProvider from '../lib/redux/AppProvider'
 import Head from '../components/Head'
 
-const About = ({ url }) => (
-  <AppProvider url={url} title='About'>
-    <Head title='About' />
+const Cause = ({ url }) => (
+  <AppProvider url={url} title="Cause">
+    <Head title="Cause" />
     <section>
-      <div className='page-title'>About</div>
+      <div className="page-title">Cause</div>
     </section>
     <style jsx>{``}</style>
   </AppProvider>
 )
 
-export default About
+export default Cause
