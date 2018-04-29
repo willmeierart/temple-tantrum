@@ -6,23 +6,17 @@ const Socials = props => {
   return (
     <div className='outer-container'>
       <div className='inner-container'>
-        <div classname='follow-us'>FOLLOW US</div>
+        <div className='follow-us'>FOLLOW US</div>
         <div className='icons-wrapper'>
-          <Link>
-            <a>
-              <Facebook />
-            </a>
-          </Link>
-          <Link>
-            <a>
-              <Instagram />
-            </a>
-          </Link>            
-          <Link>
-            <a>
-              <Twitter />
-            </a>
-          </Link>
+          <a href='https://facebook.com'>
+            <Facebook />
+          </a>
+          <a href='https://instagram.com'>
+            <Instagram />
+          </a>
+          <a href='https://twitter.com'>
+            <Twitter />
+          </a>
         </div>
       </div>
       <style jsx>{`

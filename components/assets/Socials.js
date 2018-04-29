@@ -1,6 +1,6 @@
 export const Twitter = props => (
   <svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'
-	 width='22.19px' height='19.417px' viewBox='0 0 22.19 19.417' enable-background='new 0 0 22.19 19.417'>
+	 width='22.19px' height='19.417px' viewBox='0 0 22.19 19.417' enableBackground='new 0 0 22.19 19.417'>
   <g opacity='0.3'>
     <g>
       <g>
@@ -117,7 +117,7 @@ export const Twitter = props => (
 
 export const Facebook = props => (
   <svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'
-	 width='10.387px' height='23.474px' viewBox='0 0 10.387 23.474' enable-background='new 0 0 10.387 23.474'>
+	 width='10.387px' height='23.474px' viewBox='0 0 10.387 23.474' enableBackground='new 0 0 10.387 23.474'>
   <g opacity='0.3'>
     <g>
       <g>
@@ -234,7 +234,7 @@ export const Facebook = props => (
 
 export const Instagram = props => (
   <svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'
-	 width='23.955px' height='24.054px' viewBox='0 0 23.955 24.054' enable-background='new 0 0 23.955 24.054'>
+	 width='23.955px' height='24.054px' viewBox='0 0 23.955 24.054' enableBackground='new 0 0 23.955 24.054'>
   <g opacity='0.3'>
     <g>
       <g>

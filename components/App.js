@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { checkIfMobile, getVPDims } from '../lib/redux/actions'
 import Header from './core/Header'
 import Footer from './core/Footer'
+import FloatyWordCorral from './magic/FloatyWordCorral'
+import FloatyWordCanvas from './magic/FloatyWordCanvas'
 import Routes from '../server/routes'
 import { binder } from '../lib/_utils'
 
@@ -17,13 +19,26 @@ class App extends Component {
       data: {
         bgColors: [],
         bgImg: ''
-      }
+      },
+      cursor: 0,
+      pos: { x: null, y: null }
     }
     binder(this, ['setData'])
+    this.cursors = ['Eyeball.png', 'Fire.png', 'Mario.png', 'MiddleFinger.png', 'PointerDude.png', 'RainbowTail.png', 'Strawberry.png']
   }
   componentDidMount () {
     this.setData()
-    console.log(this.props)
+    // console.log(this.props)
+    window.addEventListener('mousemove', e => {
+      // console.log(e)
+      const pos = { x: e.clientX, y: e.clientY }
+      // console.log(pos)
+      this.setState({ pos })
+    })
+    window.addEventListener('click', () => {
+      const nextIndex = this.state.cursor === this.cursors.length - 1 ? 0 : this.state.cursor + 1
+      this.setState({ cursor: nextIndex })
+    })
   }
 
   componentDidUpdate (prevProps) {
@@ -34,9 +49,9 @@ class App extends Component {
   
   setData () {
     const routePhrase = this.props.title.toLowerCase()
-    console.log(routePhrase)
+    // console.log(routePhrase)
     const data = Routes[routePhrase]
-    console.log(data)
+    // console.log(data)
     this.setState({
       // bgImg: routePhrase,
       data
@@ -44,22 +59,30 @@ class App extends Component {
   }
 
   render () {
-    const { children } = this.props
-    const { data: { bgColors, bgImg } } = this.state
-    const colorFromTitle = this.props.title.toLowerCase()
+    const { children, title } = this.props
+    // console.log(title)
+    const { data: { bgColors, bgImg }, pos: { x, y } } = this.state
+    const cursorRoot = '/static/images/cursors/'
+    // console.log(this.cursors, this.state.cursor);
+    const CURSOR = this.cursors[this.state.cursor]
     return (
       <div className='app-outer'>
-        <div className='bg-gradient'>
-          <div className='bg-img'>
-            <header>
-              <Header />
-            </header>
-            <main>{ children }</main>
-            <footer>
-              <Footer />
-            </footer>
+        <div id='CURSOR' />
+          <FloatyWordCanvas />
+        {/* <FloatyWordCorral> */}
+          <div className={title === 'Home' ? 'bg-gradient' : 'bg-img'}>
+            <div className={title === 'Home' ? 'bg-img' : 'bg-gradient'}>
+              <div className="top-gradient" />
+              <header>
+                <Header />
+              </header>
+              <main>{children}</main>
+              <footer>
+                <Footer />
+              </footer>
+            </div>
           </div>
-        </div>
+        {/* </FloatyWordCorral> */}
         <style jsx global>{`
           a {
             text-decoration: none;
@@ -72,6 +95,11 @@ class App extends Component {
             {/* overflow: hidden!important;
             position: fixed!important; */}
           }
+          * {
+            cursor: none!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
           body {
             box-sizing: border-box;
             margin: 0;
@@ -80,9 +108,15 @@ class App extends Component {
             align-items: stretch;
             font-family: sans-serif;
           }
-          header {}
+          header {
+            width: 100%;
+          }
           footer {}
-          main {}
+          main {
+            position: absolute;
+            top: 0;
+            width: 100%;
+          }
           .app-outer, .bg-gradient, .bg-img {
             width: 100%;
             height: 100%;
@@ -92,7 +126,7 @@ class App extends Component {
           .bg-gradient {
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0.5), ${bgColors[2]}0));
+            background: linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5));
             {/* z-index: 2; */}
           }
           .bg-img {
@@ -100,7 +134,27 @@ class App extends Component {
             background-size: contain;
             background-repeat: no-repeat;
             background-position: bottom center;
+            width: 100%;
             {/* z-index: 1; */}
+          }
+          #CURSOR {
+            background: url('${cursorRoot}${CURSOR}');
+            position: absolute;
+            top: ${y - 5}px;
+            left: ${x - 3}px;
+            width: 50px;
+            height: 50px;
+            z-index: 10000;
+            pointer-events: none;
+          }
+          .top-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 25vh;
+            background: linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0));
+            z-index: 5;
           }
         `}</style>
         {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}

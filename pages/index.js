@@ -8,17 +8,10 @@ import AppProvider from '../lib/redux/AppProvider'
 import Head from '../components/Head'
 import Socials from '../components/Socials'
 import DateModule from '../components/DateModule'
-// import fetch from 'isomorphic-fetch'
 
 // include boilerplate for global loader dependent on graphql req's:
 export default class HomePage extends Component {
-  // static async getInitialProps () {
-  //   // const API_URL = ''
-  //   // const res = await fetch(API_URL)
-  //   // const json = await res.json()
-  //   // const { thing } = json
-  //   // return thing
-  // }
+
   render () {
     return (
       <AppProvider url={this.props.url} title='Home'>
@@ -43,9 +36,12 @@ export default class HomePage extends Component {
         <style jsx>{`
           section {
             position: relative;
+            height: 100vh;
+            width: 100vw;
           }
           .img-wrapper {
             width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
           }

@@ -6,7 +6,7 @@ const NavBar = () => {
     Object.keys(Routes).map((routeName, i) => {
       const R = routeName === 'home' ? '/' : `/${routeName}`
       return (
-        <li>
+        <li key={i}>
           <Link key={i} href={R}>
             <a>{routeName.toUpperCase()}</a>
           </Link>
@@ -40,6 +40,7 @@ const NavBar = () => {
       <style jsx>{`
         nav {
           width: 100%;
+          z-index: 6;
         }
         .navbar-inner {
           display: flex;
@@ -62,8 +63,8 @@ const NavBar = () => {
         }
         .coming-soon-wrapper {
           position: absolute;
-          right: 0;
-          bottom: 30px;
+          right: 20px;
+          bottom: 60px;
           display: flex;
           justify-content: flex-end;
         }

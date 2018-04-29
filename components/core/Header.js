@@ -13,7 +13,9 @@ const Header = () => (
     </div>
     <style jsx>{`
       .header-outer {
+        z-index: 6;
         position: relative;
+        width: 100%;
       }
       .header-inner {
         padding: 4em;
