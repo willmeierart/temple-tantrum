@@ -1,15 +1,16 @@
 import Link from 'next/link'
 import NavBar from './NavBar'
 
-const Header = () => (
+const Header = ({ url, mobileMenu, hoverCursor }) => (
   <div className='header-outer'>
     <div className='header-inner'>
       <Link href='/'>
         <div className='logo-wrapper'>
-          <img src='/static/images/logo.png' />
+          <img onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} src='/static/images/logos/tt.png' />
         </div>
       </Link>
-      <NavBar />
+      { !mobileMenu && <NavBar hoverCursor={hoverCursor} url={url} /> }
+      
     </div>
     <style jsx>{`
       .header-outer {

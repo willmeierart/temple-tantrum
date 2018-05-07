@@ -15,3 +15,10 @@ $font-base: sans-serif !default;
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Leafy';
+  src: url('./leafy.woff2') format('woff2'), url('./leafy.woff') format('woff'), url('./leafy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,14 +1,30 @@
+import React, { Component } from 'react'
 import AppProvider from '../lib/redux/AppProvider'
 import Head from '../components/Head'
+import withData from '../lib/withData'
+import { graphql, compose } from 'react-apollo'
+import { aboutPage } from '../lib/queries'
+import AboutWrapper from '../components/about/Wrapper'
 
-const About = ({ url }) => (
-  <AppProvider url={url} title='About'>
-    <Head title='About' />
-    <section>
-      <div className='page-title'>About</div>
-    </section>
-    <style jsx>{``}</style>
-  </AppProvider>
+class About extends Component {
+  componentDidMount () {
+    console.log(this.props)
+  }
+  render () {
+    console.log(this.props)
+    return (
+      <AppProvider {...this.props} title='About'>
+        <Head title='About' />
+        <section>
+          <AboutWrapper data={this.props.data} />
+        </section>
+        <style jsx>{``}</style>
+      </AppProvider>
+    )
+  }
+}
+
+// export default About
+export default withData(
+  graphql(aboutPage)(About)
 )
-
-export default About

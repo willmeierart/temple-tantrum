@@ -12,6 +12,7 @@ export default {
   },
   music: {
     name: 'music',
+    size: 2,
     pos: {
       x: 0,
       y: 0

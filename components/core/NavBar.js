@@ -1,41 +1,53 @@
 import Link from 'next/link'
 import Routes from '../../server/routes'
 
-const NavBar = () => {
+const NavBar = ({ url, hoverCursor }) => {
   const renderLinks = () => (
-    Object.keys(Routes).map((routeName, i) => {
-      const R = routeName === 'home' ? '/' : `/${routeName}`
-      return (
-        <li key={i}>
-          <Link key={i} href={R}>
-            <a>{routeName.toUpperCase()}</a>
-          </Link>
-          <style jsx>{`
-            li {
-              color: white;
-              font-size: .5em;
-              font-family: 'Verlag-Book';
-              letter-spacing: .2em;
-              margin: 0 2em;
-            }
-          `}</style>
-        </li>
-      )
-    })
+    Object.keys(Routes).reduce((list, route) => {
+      const R = `/${route}`
+      const active = (route === url.asPath.replace('/', ''))
+      if (route !== 'home') {
+        list.push(
+          <li onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} key={route}>
+            <Link href={R}>
+              <a>{route.toUpperCase()}</a>
+            </Link>
+            <style jsx>{`
+              li {
+                color: white;
+                font-size: .5em;
+                font-family: 'Verlag-Book';
+                letter-spacing: .2em;
+                margin: 0 2em;
+                text-align: center;
+                text-align: center;
+                line-height: 1.25em;
+                padding: .25em;
+                {/* text-decoration: ${active ? 'underline' : 'none'}; */}
+                border-bottom: ${active ? '1px solid white' : 'none'}
+              }
+              a {
+                
+              }
+            `}</style>
+          </li>
+        )
+      }
+      return list
+    }, [])
   )
   return (
     <nav>
       <div className='navbar-inner'>
         <ul className='navlinks'>
           { renderLinks() }
-          <li className='get-tickets'>
+          <li onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} className='get-tickets'>
             <a href='#'>GET TICKETS</a>
           </li>
           <div className='coming-soon-wrapper'>
             <img src='/static/images/coming_soon.png' />
           </div>
         </ul>
-
       </div>
       <style jsx>{`
         nav {

@@ -45,7 +45,8 @@ class FloatyWordCanvas extends Component {
       const { pos } = { ...word }
       const randX = random(margin, w - margin)
       const randY = random(margin, h - margin)
-      const randSize = random(50, 75)
+      const S = word.size || 1
+      const randSize = random(Math.floor(window.innerWidth / 25 * S), Math.floor(window.innerWidth / 15 * S))
       pos.x = randX()
       pos.y = randY()
       newWordState[wd] = {
@@ -94,7 +95,7 @@ class FloatyWordCanvas extends Component {
         y: condDY
       }
     }
-    ctx.font = `${word.size}px Arial`
+    ctx.font = `${word.size}px Leafy`
     ctx.fillText(name, x, y)
     return newWord
   }
@@ -111,7 +112,7 @@ class FloatyWordCanvas extends Component {
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 5;
+            z-index: 100;
             mix-blend-mode: overlay;
             pointer-events: none;
             opacity: 0.5;

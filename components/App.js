@@ -2,12 +2,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { checkIfMobile, getVPDims } from '../lib/redux/actions'
+import { checkIfMobile, getVPDims, setSponsors, hoverCursor } from '../lib/redux/actions'
 import Header from './core/Header'
 import Footer from './core/Footer'
-import FloatyWordCorral from './magic/FloatyWordCorral'
 import FloatyWordCanvas from './magic/FloatyWordCanvas'
 import Routes from '../server/routes'
+import Menu from './core/Menu'
+import MenuButton from './core/MenuButton'
 import { binder } from '../lib/_utils'
 
 // import globalStyles from '../../styles/index.scss'
@@ -21,23 +22,30 @@ class App extends Component {
         bgImg: ''
       },
       cursor: 0,
-      pos: { x: null, y: null }
+      mousePos: { x: 0, y: 0 },
+      mobileMenu: false,
+      menuOpen: false,
+      cursorHover: false
     }
-    binder(this, ['setData'])
-    this.cursors = ['Eyeball.png', 'Fire.png', 'Mario.png', 'MiddleFinger.png', 'PointerDude.png', 'RainbowTail.png', 'Strawberry.png']
+    binder(this, ['setData', 'updateCursorOnScroll', 'toggleMenu', 'hoverCursor'])
+    this.cursors = ['Eyeball.png', 'Fire.png', 'Mario.png', 'PointerDude.png', 'RainbowTail.png', 'Strawberry.png', 'anarchy.png', 'banana.gif', 'dragon.png', 'gauntlet.png', 'lightsaber.gif', 'partyhat.png', 'skull.gif', 'smiley.gif', 'spaceship.gif']
   }
   componentDidMount () {
+    this.setState({ mobileMenu: window.innerWidth < 900 })
     this.setData()
-    // console.log(this.props)
     window.addEventListener('mousemove', e => {
-      // console.log(e)
-      const pos = { x: e.clientX, y: e.clientY }
-      // console.log(pos)
-      this.setState({ pos })
+      const { scrollX, scrollY } = window
+      const mousePos = { x: e.clientX + scrollX, y: e.clientY + scrollY }
+      this.setState({ mousePos })
     })
     window.addEventListener('click', () => {
       const nextIndex = this.state.cursor === this.cursors.length - 1 ? 0 : this.state.cursor + 1
       this.setState({ cursor: nextIndex })
+    })
+    // window.addEventListener('scroll', e => { e.preventDefault() })
+    window.addEventListener('resize', () => {
+      const small = window.innerWidth < 900
+      this.setState({ mobileMenu: small, menuOpen: (small && this.state.menuOpen) })
     })
   }
 
@@ -45,6 +53,24 @@ class App extends Component {
     if (this.props.title !== prevProps.title) {
       this.setData()
     }
+  }
+
+  toggleMenu () {
+    this.setState({ menuOpen: !this.state.menuOpen })
+  }
+
+  hoverCursor (bool) {
+    this.props.onHoverCursor(bool)
+  }
+
+  updateCursorOnScroll (e) {
+    const { mousePos } = this.state
+    const { scrollY, innerHeight } = window
+    const { deltaY } = e
+    let D = { ...mousePos }
+    if (!scrollY <= 0 && !mousePos.y >= innerHeight) { D.y = mousePos.y + deltaY }
+    const newMousePos = { x: D.x, y: D.y }
+    this.setState({ mousePos: newMousePos })
   }
   
   setData () {
@@ -59,30 +85,28 @@ class App extends Component {
   }
 
   render () {
-    const { children, title } = this.props
-    // console.log(title)
-    const { data: { bgColors, bgImg }, pos: { x, y } } = this.state
+    const { children, title, url } = this.props
+    const { data: { bgColors, bgImg }, mousePos: { x, y } } = this.state
     const cursorRoot = '/static/images/cursors/'
-    // console.log(this.cursors, this.state.cursor);
     const CURSOR = this.cursors[this.state.cursor]
     return (
-      <div className='app-outer'>
-        <div id='CURSOR' />
-          <FloatyWordCanvas />
-        {/* <FloatyWordCorral> */}
-          <div className={title === 'Home' ? 'bg-gradient' : 'bg-img'}>
-            <div className={title === 'Home' ? 'bg-img' : 'bg-gradient'}>
-              <div className="top-gradient" />
-              <header>
-                <Header />
-              </header>
-              <main>{children}</main>
-              <footer>
-                <Footer />
-              </footer>
-            </div>
+      <div className='app-outer' onWheel={e => { this.updateCursorOnScroll(e) }}>
+        <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} />
+        <FloatyWordCanvas />
+        <div className={title === 'Home' ? 'bg-gradient' : 'bg-img'}>
+          <div className={title === 'Home' ? 'bg-img' : 'bg-gradient'}>
+            <div className='top-gradient' />
+            { this.state.mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={this.state.menuOpen} /> }
+            <header>
+              <Header hoverCursor={this.hoverCursor} mobileMenu={this.state.mobileMenu} url={url} />
+            </header>
+            { this.state.menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
+            <main>{children}</main>
+            <footer>
+              <Footer hoverCursor={this.hoverCursor} sponsors={this.props.sponsors} />
+            </footer>
           </div>
-        {/* </FloatyWordCorral> */}
+        </div>
         <style jsx global>{`
           a {
             text-decoration: none;
@@ -90,10 +114,6 @@ class App extends Component {
           }
           li {
             list-style: none;
-          }
-          html, body {
-            {/* overflow: hidden!important;
-            position: fixed!important; */}
           }
           * {
             cursor: none!important;
@@ -107,35 +127,56 @@ class App extends Component {
             justify-content: stretch;
             align-items: stretch;
             font-family: sans-serif;
+            width: 100%;
+            height: 100%;
           }
           header {
             width: 100%;
           }
-          footer {}
+          footer {
+            position: fixed;
+            bottom: 0;
+            height: 100px;
+            width: 100%;
+            z-index: 1200;
+          }
           main {
             position: absolute;
             top: 0;
+            height: 100%;
             width: 100%;
           }
-          .app-outer, .bg-gradient, .bg-img {
+          .app-outer {
+            overflow: hidden;
+            {/* position: fixed; */}
+          }
+          .app-outer, .bg-gradient, main {
             width: 100%;
             height: 100%;
             min-height: 100vh;
             min-width: 100vw;
+            box-sizing: border-box;
           }
           .bg-gradient {
             width: 100%;
             height: 100%;
+            min-height: 100vh;
             background: linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5));
+            z-index: 2;
+            position: relative;
             {/* z-index: 2; */}
           }
           .bg-img {
+            height: calc(100% - 100px);   
+            bottom: 100px;         
             background: url('${bgImg}');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: bottom center;
-            width: 100%;
-            {/* z-index: 1; */}
+            max-width: 100%;
+            display: flex;
+            flex-grow: 0;
+            z-index: 
           }
           #CURSOR {
             background: url('${cursorRoot}${CURSOR}');
@@ -146,6 +187,9 @@ class App extends Component {
             height: 50px;
             z-index: 10000;
             pointer-events: none;
+          }
+          #CURSOR.active {
+            background: url('/static/images/cursors/MiddleFinger.png');
           }
           .top-gradient {
             position: absolute;
@@ -166,14 +210,18 @@ class App extends Component {
 function mapStateToProps (state) {
   return {
     isMobile: state.env.isMobile,
-    dims: state.env.dims
+    dims: state.env.dims,
+    cursorHovered: state.env.cursorHovered,
+    sponsors: state.cachedData.sponsors
   }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
     onCheckIfMobile: () => dispatch(checkIfMobile()),
-    onGetVPDims: () => dispatch(getVPDims())
+    onGetVPDims: () => dispatch(getVPDims()),
+    onSetSponsors: sponsors => dispatch(setSponsors(sponsors)),
+    onHoverCursor: bool => dispatch(hoverCursor(bool))
   }
 }
 
