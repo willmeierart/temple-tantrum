@@ -32,12 +32,13 @@ const Live = props => (
         position: relative;
         margin-left: 10%;
         margin-top: 20vh;
+        margin-bottom: 150px;
         flex-grow: 1;
         height: 100%;
         font-family: Leafy;
         color: white;        
         letter-spacing: .125em;
-        height: 60vh;
+        z-index: 4;
       }
       .the-music {
         font-size: 1.75em;
@@ -59,7 +60,6 @@ const Live = props => (
         flex-direction: column;
         {/* justify-content: space-around; */}
         align-items: center;
-        overflow: scroll;
         flex-grow: 1;
         height: 100%;
         

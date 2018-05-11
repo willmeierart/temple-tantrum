@@ -40,10 +40,10 @@ const Cause = props => {
           height: 100%;
           font-family: Leafy;
           color: white;
-          height: 60vh;
           letter-spacing: 0.125em;
-          overflow: scroll;
-          border-right: 1px solid red;
+          {/* border-right: 1px solid red; */}
+          margin-bottom: 150px;
+          z-index: 4;
         }
         .good-cause {
           text-align: center;
@@ -51,6 +51,7 @@ const Cause = props => {
           top: 0;
           left: 5vw;
           transform: rotate(-20deg);
+          z-index: 20;
         }
         .good-cause .cause {
           font-size: 3em;

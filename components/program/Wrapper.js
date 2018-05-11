@@ -25,6 +25,11 @@ class ProgramsWrapper extends Component {
           </div>
         </section>
         <style jsx>{`
+          .outer-wrapper {
+            z-index: 4;
+            position: relative;
+            margin-bottom: 150px;
+          }
           section {
             margin-top: 25vh;
           }
@@ -33,14 +38,7 @@ class ProgramsWrapper extends Component {
             margin-left: 10%;
           }
           .list-wrapper {
-            height: 52vh;
-            
-            overflow: scroll;
           }
-        `}</style>
-        <style jsx>{`
-          .outer-wrapper{}
-          .inner-wrapper{}
         `}</style>
       </div>
     )

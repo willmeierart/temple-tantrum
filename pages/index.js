@@ -52,7 +52,8 @@ class HomePage extends Component {
         <style jsx>{`
           section {
             position: relative;
-            height: 100vh;
+            {/* height: 100vh; */}
+            height: 100%;
             width: 100vw;
           }
           .img-wrapper {

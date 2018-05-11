@@ -9,7 +9,7 @@ const Contact = props => {
       <Head title='Contact' />
       <section>
         <div className='msg'>WE LOOK FORWARD TO HEARING FROM YOU!</div>
-        <a href={`mailto:${email}`} target='_blank'><div className='email'>{ email }</div></a>
+        <a href={`mailto:${email}`} target='_blank'><div className='email'>{ splitEmail }</div></a>
       </section>
       <style jsx>{`
         section {
@@ -25,13 +25,16 @@ const Contact = props => {
           letter-spacing: 0.125em;
           font-size: 2em;
           text-align: center;
+          z-index: 4;
         }
         .email {
-          width: 80%;
+          width: 100vw;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
+          margin-top: 2em;
           font-size: 2em;
-          {/* flex-wrap: wrap; */}
+          {/* white-space: pre-wrap; */}
+          flex-wrap: wrap;
         }
         .email:hover {
           color: rgba(249, 209, 71);

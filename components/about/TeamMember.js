@@ -1,4 +1,5 @@
-const TeamMember = ({ member, L }) => {
+const TeamMember = ({ member, L, isLast, isThin }) => {
+  console.log(isThin)
   const { bio, image, name } = member
   return (
     <div className='outer-container'>
@@ -11,19 +12,21 @@ const TeamMember = ({ member, L }) => {
       </div>
       <style jsx>{`
         .outer-container {
-          height: 25vh;
+          {/* height: 25vh; */}
           position: relative;
           margin: 2em;
+          border-bottom: ${!isLast && '1px solid darkred'}
         }
         .inner-container {
           display: flex;
-          flex-direction: ${L ? 'row' : 'row-reverse'};
-          justify-content: center;
+          flex-direction: ${isThin ? 'column' : L ? 'row' : 'row-reverse'};
+          justify-content: space-around;
           align-items: center;
           position: relative;
           color: white;
           font-family: leafy;  
-          height: 100%;    
+          height: 100%; 
+          margin-bottom: 2em;
         }
         .module {
           display: flex;
@@ -35,7 +38,7 @@ const TeamMember = ({ member, L }) => {
           margin: 2em;
         }
         img {
-          height: 100%;
+          height: 20vh;
         }
       `}</style>
     </div>

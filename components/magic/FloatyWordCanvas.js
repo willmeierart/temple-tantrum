@@ -33,7 +33,7 @@ class FloatyWordCanvas extends Component {
   }
 
   componentWillUnmount () {
-    window.clearAnimationFrame(this.animateAllWords)
+    window.cancelAnimationFrame(this.animateAllWords)
   }
 
   updateCanvasSize () {

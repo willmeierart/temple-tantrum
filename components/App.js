@@ -25,7 +25,8 @@ class App extends Component {
       mousePos: { x: 0, y: 0 },
       mobileMenu: false,
       menuOpen: false,
-      cursorHover: false
+      cursorHover: false,
+      isThin: false
     }
     binder(this, ['setData', 'updateCursorOnScroll', 'toggleMenu', 'hoverCursor'])
     this.cursors = ['Eyeball.png', 'Fire.png', 'Mario.png', 'PointerDude.png', 'RainbowTail.png', 'Strawberry.png', 'anarchy.png', 'banana.gif', 'dragon.png', 'gauntlet.png', 'lightsaber.gif', 'partyhat.png', 'skull.gif', 'smiley.gif', 'spaceship.gif']
@@ -45,7 +46,7 @@ class App extends Component {
     // window.addEventListener('scroll', e => { e.preventDefault() })
     window.addEventListener('resize', () => {
       const small = window.innerWidth < 900
-      this.setState({ mobileMenu: small, menuOpen: (small && this.state.menuOpen) })
+      this.setState({ mobileMenu: small, menuOpen: (small && this.state.menuOpen), isThin: small })
     })
   }
 
@@ -93,20 +94,20 @@ class App extends Component {
       <div className='app-outer' onWheel={e => { this.updateCursorOnScroll(e) }}>
         <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} />
         <FloatyWordCanvas />
-        <div className={title === 'Home' ? 'bg-gradient' : 'bg-img'}>
-          <div className={title === 'Home' ? 'bg-img' : 'bg-gradient'}>
-            <div className='top-gradient' />
-            { this.state.mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={this.state.menuOpen} /> }
-            <header>
-              <Header hoverCursor={this.hoverCursor} mobileMenu={this.state.mobileMenu} url={url} />
-            </header>
-            { this.state.menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
-            <main>{children}</main>
-            <footer>
-              <Footer hoverCursor={this.hoverCursor} sponsors={this.props.sponsors} />
-            </footer>
-          </div>
+        <div className='app-inner'>
+          <div className='bg-gradient' />
+          <div className='bg-img' />
+          <div className='top-gradient' />
+          { this.state.mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={this.state.menuOpen} /> }
+          <header>
+            <Header hoverCursor={this.hoverCursor} mobileMenu={this.state.mobileMenu} url={url} />
+          </header>
+          { this.state.menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
+          <main>{children}</main>
         </div>
+        <footer>
+          <Footer isThin={this.state.isThin} hoverCursor={this.hoverCursor} sponsors={this.props.sponsors} />
+        </footer>
         <style jsx global>{`
           a {
             text-decoration: none;
@@ -127,56 +128,62 @@ class App extends Component {
             justify-content: stretch;
             align-items: stretch;
             font-family: sans-serif;
-            width: 100%;
+            width: 100vw;
             height: 100%;
+            position: relative;
           }
           header {
             width: 100%;
           }
           footer {
-            position: fixed;
+            position: absolute;
             bottom: 0;
             height: 100px;
             width: 100%;
             z-index: 1200;
           }
           main {
-            position: absolute;
+            {/* position: absolute; */}
             top: 0;
             height: 100%;
             width: 100%;
           }
-          .app-outer {
-            overflow: hidden;
-            {/* position: fixed; */}
-          }
-          .app-outer, .bg-gradient, main {
+          .app-outer, main {
             width: 100%;
             height: 100%;
             min-height: 100vh;
             min-width: 100vw;
             box-sizing: border-box;
           }
-          .bg-gradient {
+          .app-inner {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
             width: 100%;
-            height: 100%;
+            min-width: 100vw;
+            min-height: 100vh;
+          }
+          .bg-gradient {
+            width: 100vw;
             min-height: 100vh;
             background: linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5));
-            z-index: 2;
-            position: relative;
-            {/* z-index: 2; */}
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: ${title === 'Home' ? 2 : 3};
           }
           .bg-img {
-            height: calc(100% - 100px);   
-            bottom: 100px;         
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            display: flex;
+            top: 0;
+            left: 0;         
             background: url('${bgImg}');
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: bottom center;
-            max-width: 100%;
-            display: flex;
-            flex-grow: 0;
-            z-index: 
+            background-position: center;
+            z-index: ${title === 'Home' ? 3 : 2};
           }
           #CURSOR {
             background: url('${cursorRoot}${CURSOR}');
@@ -185,7 +192,7 @@ class App extends Component {
             left: ${x - 3}px;
             width: 50px;
             height: 50px;
-            z-index: 10000;
+            z-index: 1000000000000000000000000000000000000000000000000;
             pointer-events: none;
           }
           #CURSOR.active {
@@ -201,7 +208,6 @@ class App extends Component {
             z-index: 5;
           }
         `}</style>
-        {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
       </div>
     )
   }

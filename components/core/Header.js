@@ -15,7 +15,7 @@ const Header = ({ url, mobileMenu, hoverCursor }) => (
     <style jsx>{`
       .header-outer {
         z-index: 6;
-        position: relative;
+        position: absolute;
         width: 100%;
       }
       .header-inner {

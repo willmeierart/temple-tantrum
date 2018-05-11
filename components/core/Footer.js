@@ -31,7 +31,7 @@ const stockSponsors = [
   }
 ]
 
-const Footer = ({ sponsors, hoverCursor }) => {
+const Footer = ({ sponsors, hoverCursor, isThin }) => {
   const SPONSORS = sponsors && sponsors.length > 0 ? sponsors : stockSponsors
   const renderList = () => SPONSORS.map(sponsor => (
     <div onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} key={sponsor.name} className='link-wrapper'>
@@ -43,6 +43,8 @@ const Footer = ({ sponsors, hoverCursor }) => {
           position: relative;
           display: flex;
           align-items: center;
+          max-width: 33vw;
+          margin: 2em 0;
         }
         img {
           max-height: 70px;
@@ -59,7 +61,7 @@ const Footer = ({ sponsors, hoverCursor }) => {
       </div>
       <style jsx>{`
         .footer-outer {
-          height: 100%;
+          {/* height: 100%; */}
           z-index: 1030000000000;
           background: linear-gradient(to bottom, rgba(255,255,255,.66), rgba(255,255,255,1));
         }
@@ -67,6 +69,7 @@ const Footer = ({ sponsors, hoverCursor }) => {
           width: 100%;
           height: 100%;
           display: flex;
+          flex-direction: ${isThin ? 'column' : 'row'};
           position: relative;
           justify-content: space-around;
           align-items: center;
