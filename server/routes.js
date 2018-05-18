@@ -1,7 +1,7 @@
 // just in case custom routing comes into play
 export default {
   home: {
-    bgImg: '/static/images/backgrounds/home.png',
+    bgImg: '/static/images/backgrounds/home_full.png',
     bgColors: ['rgb(233, 63, 58, ', 'rgba(240, 127, 62, ', 'rgba(249, 209, 71, ']
   },
   live: {

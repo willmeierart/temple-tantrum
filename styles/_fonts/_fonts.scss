@@ -22,3 +22,12 @@ $font-base: sans-serif !default;
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Euphorigenic';
+  src: url('Euphorigenic-Regular.eot');
+  src: url('Euphorigenic-Regular.eot?#iefix') format('embedded-opentype'), url('Euphorigenic-Regular.woff2') format('woff2'), url('Euphorigenic-Regular.woff') format('woff'), url('Euphorigenic-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+

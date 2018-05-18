@@ -34,15 +34,17 @@ class App extends Component {
   componentDidMount () {
     this.setState({ mobileMenu: window.innerWidth < 900 })
     this.setData()
-    window.addEventListener('mousemove', e => {
-      const { scrollX, scrollY } = window
-      const mousePos = { x: e.clientX + scrollX, y: e.clientY + scrollY }
-      this.setState({ mousePos })
-    })
-    window.addEventListener('click', () => {
-      const nextIndex = this.state.cursor === this.cursors.length - 1 ? 0 : this.state.cursor + 1
-      this.setState({ cursor: nextIndex })
-    })
+    if (!this.props.isMobile) {
+      window.addEventListener('mousemove', e => {
+        const { scrollX, scrollY } = window
+        const mousePos = { x: e.clientX + scrollX, y: e.clientY + scrollY }
+        this.setState({ mousePos })
+      })
+      window.addEventListener('click', () => {
+        const nextIndex = this.state.cursor === this.cursors.length - 1 ? 0 : this.state.cursor + 1
+        this.setState({ cursor: nextIndex })
+      })
+    }
     // window.addEventListener('scroll', e => { e.preventDefault() })
     window.addEventListener('resize', () => {
       const small = window.innerWidth < 900
@@ -86,24 +88,28 @@ class App extends Component {
   }
 
   render () {
-    const { children, title, url } = this.props
+    const { children, title, url, isMobile } = this.props
+    // console.log(url);
     const { data: { bgColors, bgImg }, mousePos: { x, y } } = this.state
     const cursorRoot = '/static/images/cursors/'
     const CURSOR = this.cursors[this.state.cursor]
     return (
       <div className='app-outer' onWheel={e => { this.updateCursorOnScroll(e) }}>
-        <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} />
+        { !isMobile && <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> }
         <FloatyWordCanvas />
         <div className='app-inner'>
           <div className='bg-gradient' />
-          <div className='bg-img' />
           <div className='top-gradient' />
           { this.state.mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={this.state.menuOpen} /> }
           <header>
             <Header hoverCursor={this.hoverCursor} mobileMenu={this.state.mobileMenu} url={url} />
           </header>
           { this.state.menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
-          <main>{children}</main>
+          { url.pathname !== '/' && <div className='bg-img' /> }
+          <main>
+            { url.pathname === '/' && <img className='big-ol-bg' src='/static/images/backgrounds/home_img_lg.png' /> }
+            {children}
+          </main>
         </div>
         <footer>
           <Footer isThin={this.state.isThin} hoverCursor={this.hoverCursor} sponsors={this.props.sponsors} />
@@ -143,12 +149,13 @@ class App extends Component {
             z-index: 1200;
           }
           main {
-            {/* position: absolute; */}
+            {/* position: ${ url.pathname === '/' ? 'absolute' : 'regular' }; */}
+            z-index: 4;
             top: 0;
             height: 100%;
             width: 100%;
           }
-          .app-outer, main {
+          .app-outer {
             width: 100%;
             height: 100%;
             min-height: 100vh;
@@ -182,8 +189,14 @@ class App extends Component {
             background: url('${bgImg}');
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: ${url.pathname === '/' ? 'center bottom' : 'center'};
             z-index: ${title === 'Home' ? 3 : 2};
+          }
+          .big-ol-bg {
+            width: 100%;
+            z-index: 4;
+            margin-top: 15vh;
+            margin-bottom: -100vh;
           }
           #CURSOR {
             background: url('${cursorRoot}${CURSOR}');

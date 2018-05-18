@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Facebook, Instagram, Twitter } from './assets/Socials'
+import { Facebook, Instagram, Twitter } from '../assets/Socials'
 import Link from 'next/link'
 
 const Socials = props => {
