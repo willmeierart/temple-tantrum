@@ -11,7 +11,7 @@ class LivePage extends Component {
   render () {
     console.log(this.props)
     const { data: { allLivePages } } = this.props
-    const stuff = allLivePages ? allLivePages[0] : null
+    const stuff = allLivePages ? allLivePages[0] : { musicLineup: { url: '' }, artistLineup: { url: '' }, entertainmentLineup: { url: '' } }
     
     return (
       <AppProvider {...this.props} title='Live'>
