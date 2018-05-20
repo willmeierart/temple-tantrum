@@ -175,7 +175,7 @@ class App extends Component {
           .bg-gradient {
             width: 100vw;
             min-height: 100vh;
-            background: ${gradient};
+            background-image: ${gradient};
             position: fixed;
             top: 0;
             left: 0;
