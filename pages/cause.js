@@ -7,7 +7,6 @@ import Head from '../components/Head'
 const Cause = props => {
   const cause = props.data.allCausePages ? props.data.allCausePages[0] : { body: '<div/>', header: '' }
   const { body, header } = cause
-  console.log(props)
   return (
     <AppProvider {...props} title='Cause'>
       <Head title='Cause' />

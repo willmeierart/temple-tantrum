@@ -19,13 +19,10 @@ class Programs extends Component {
     this.filterList = this.filterList.bind(this)
   }
   setActiveFilter (filter) {
-    console.log(filter)
     const thisFilter = this.filters.filter(filter2 => {
       const ret = filter2.indexOf(filter) === 0
-      console.log(ret)
       return ret
     })[0]
-    console.log(thisFilter)
     this.setState({ filter: thisFilter })
   }
 

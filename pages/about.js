@@ -8,10 +8,8 @@ import AboutWrapper from '../components/about/Wrapper'
 
 class About extends Component {
   componentDidMount () {
-    console.log(this.props)
   }
   render () {
-    console.log(this.props)
     return (
       <AppProvider {...this.props} title='About'>
         <Head title='About' />

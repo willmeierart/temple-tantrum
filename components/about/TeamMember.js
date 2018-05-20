@@ -1,5 +1,4 @@
 const TeamMember = ({ member, L, isLast, isThin }) => {
-  console.log(isThin)
   const { bio, image, name, tagline } = member
   return (
     <div className='outer-container'>

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 const HomeTextBox = ({ data, L, hoverCursor }) => {
-  console.log(data);
   const { title, body, backgroundText, linktext, linkURL } = data
   return (
     <div className='outer-container'>

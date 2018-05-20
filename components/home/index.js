@@ -16,12 +16,9 @@ class HomeWrapper extends Component {
   }
 
   renderTextBoxes () {
-    console.log(this.props)
-    
     const { data: { allHomeTextBoxes } } = this.props
     // if (data) {
     // const modules = data ? data.allHomeTextBoxes : []
-    console.log(allHomeTextBoxes)
     return allHomeTextBoxes.map((mod, i) => (
       <HomeTextBox hoverCursor={this.props.onHoverCursor} key={i} data={mod} L={i % 2 === 0} />
     ))
@@ -32,7 +29,6 @@ class HomeWrapper extends Component {
   }
 
   render () {
-    console.log(this.props)
     const { data: { allGenerals, allHomeTextBoxes } } = this.props
     
     let socials = {}

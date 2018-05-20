@@ -1,7 +1,6 @@
 const ProgramList = ({ filters, filter, setActiveFilter, hoverCursor }) => {
   const renderList = () => {
     return filters.map((type, i) => {
-      console.log(filter, type);
       const isActive = filter === type
       return (
         <li onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} onClick={() => { setActiveFilter(type) }} key={i} className='module-wrapper'>

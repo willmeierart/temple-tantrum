@@ -90,7 +90,6 @@ class App extends Component {
 
   render () {
     const { children, title, url, isMobile, sponsors } = this.props
-    console.log(isMobile)
     const { data: { bgColors, bgImg }, mousePos: { x, y }, menuOpen, mobileMenu, isThin } = this.state
     const gradient = `linear-gradient(${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
     // console.log(gradient)

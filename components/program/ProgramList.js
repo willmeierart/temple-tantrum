@@ -1,7 +1,6 @@
 import EventModule from './EventModule'
 
 const ProgramList = ({ programs, filter, hoverCursor }) => {
-  console.log(programs)
   const renderMany = () => {
     return programs.map((program, i) => {
       return (

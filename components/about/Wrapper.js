@@ -50,7 +50,6 @@ class AboutWrapper extends Component {
     }
     const team = this.props.data.allTeams || []
     const aboutPage = this.props.data.allAboutPages ? this.props.data.allAboutPages[0] : { description: '' }
-    console.log(this.props)
     return (
       <div className='outer-wrapper'>
         <div className='inner-wrapper'>

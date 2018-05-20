@@ -28,7 +28,6 @@ class HomePage extends Component {
   }
 
   render () {
-    console.log(this.props)
     return (
       <AppProvider sponsors={this.state.sponsors} {...this.props} title='Home'>
         <Head title='Home' />
