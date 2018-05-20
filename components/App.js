@@ -90,7 +90,7 @@ class App extends Component {
   render () {
     const { children, title, url, isMobile } = this.props
     const { data: { bgColors, bgImg }, mousePos: { x, y } } = this.state
-    const gradient = `linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
+    const gradient = `linear-gradient(${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
     console.log(gradient)
     // console.log(url);
     const cursorRoot = '/static/images/cursors/'
