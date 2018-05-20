@@ -97,8 +97,8 @@ class App extends Component {
     const CURSOR = this.cursors[this.state.cursor]
     return (
       <div className='app-outer' onWheel={e => { this.updateCursorOnScroll(e) }}>
-        <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} />
-        {/* { !isMobile && <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> } */}
+        {/* <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> */}
+        { !isMobile && <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> }
         <FloatyWordCanvas />
         <div className='app-inner'>
           <div className='bg-gradient' />
