@@ -78,6 +78,11 @@ const HomeTextBox = ({ data, L }) => {
         .main-content {
           z-index: 20;
         }
+        @media screen and (max-width: 700px) {
+          .background-txt {
+            font-size: 4em;
+          }
+        }
       `}</style>
     </div>
   )

@@ -80,6 +80,7 @@ class AboutWrapper extends Component {
             display: flex;
             justify-content: center;
             position: relative;
+            text-align: center;
           }
           .team-wrapper {
             position: relative;

@@ -4,7 +4,6 @@ import random from 'unique-random'
 import floatyWordState from './floatyWordState'
 import { binder } from '../../lib/_utils'
 
-
 class FloatyWordCanvas extends Component {
   constructor (props) {
     super(props)
@@ -16,12 +15,14 @@ class FloatyWordCanvas extends Component {
       dx: 1,
       dy: 1,
       words: floatyWordState,
-      canvasInitd: false
+      canvasInitd: false,
+      height: 0
     }
     binder(this, ['initCanvas', 'updateCanvasSize', 'renderWord', 'setAllOrigins', 'animateAllWords'])
     this.wordNames = Object.keys(floatyWordState)
     this.three = true
   }
+
 
   async componentDidMount () {
     await this.updateCanvasSize()
@@ -30,6 +31,35 @@ class FloatyWordCanvas extends Component {
     window.addEventListener('resize', () => {
       this.updateCanvasSize()
     })
+    const initHeight = () => {
+      this.body = document.querySelector('body')
+      const height = Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight)
+      this.setState({ height })
+    }
+    let interval
+    if (typeof document !== 'undefined') {
+      await initHeight()
+      if (!interval) {
+        interval = setInterval(() => {
+          console.log('interval')
+          if (this.state.height !== Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4) {
+            console.log(this.state.height, Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4)
+            this.setState({ height: Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4 }, this.updateCanvasSize)
+            // this.updateCanvasSize()
+          } else {
+            clearInterval(interval)
+          }
+        }, 1000)
+      }
+    } else {
+      setTimeout(initHeight, 200)
+    }
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.state.height !== prevState.height) {
+      this.updateCanvasSize()
+    }
   }
 
   componentWillUnmount () {
@@ -37,7 +67,14 @@ class FloatyWordCanvas extends Component {
   }
 
   updateCanvasSize () {
-    this.setState({ w: window.innerWidth, h: window.innerHeight })
+    // console.log(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight)
+    let height
+    if (this.body) {
+      height = this.state.height
+    } else {
+      height = window.outerHeight
+    }
+    this.setState({ w: window.outerWidth, h: height })
   }
 
   setAllOrigins () {

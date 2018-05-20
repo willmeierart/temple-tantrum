@@ -68,7 +68,7 @@ class componentName extends Component {
           }
           .socials-wrapper {
             position: absolute; 
-            top: -70vh;
+            top: -100vh;
             right: 10vw;
             color: white;
           }
@@ -76,11 +76,22 @@ class componentName extends Component {
             position: absolute;
             width: 150px;
             left: 10vw;
-            top: -70vw;
+            top: -100vh;
           }
           .text-block-wrapper {
             margin-top: 100vh;
             z-index: 10;
+            margin-bottom: 40vw;
+          }
+          @media screen and (max-width: 1000px) {
+            .socials-wrapper {
+              top: -70vh;
+              right: 5vw;
+            }
+            .date-wrapper {
+              top: -70vh;
+              left: 5vw;
+            }
           }
         `}</style>
       </div>

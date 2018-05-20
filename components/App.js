@@ -31,9 +31,10 @@ class App extends Component {
     binder(this, ['setData', 'updateCursorOnScroll', 'toggleMenu', 'hoverCursor'])
     this.cursors = ['Eyeball.png', 'Fire.png', 'Mario.png', 'PointerDude.png', 'RainbowTail.png', 'Strawberry.png', 'anarchy.png', 'banana.gif', 'dragon.png', 'gauntlet.png', 'lightsaber.gif', 'partyhat.png', 'skull.gif', 'smiley.gif', 'spaceship.gif']
   }
-  componentDidMount () {
+  async componentDidMount () {
     this.setState({ mobileMenu: window.innerWidth < 900 })
     this.setData()
+    await this.props.onCheckIfMobile()
     if (!this.props.isMobile) {
       window.addEventListener('mousemove', e => {
         const { scrollX, scrollY } = window
@@ -88,8 +89,9 @@ class App extends Component {
   }
 
   render () {
-    const { children, title, url, isMobile } = this.props
-    const { data: { bgColors, bgImg }, mousePos: { x, y } } = this.state
+    const { children, title, url, isMobile, sponsors } = this.props
+    console.log(isMobile)
+    const { data: { bgColors, bgImg }, mousePos: { x, y }, menuOpen, mobileMenu, isThin } = this.state
     const gradient = `linear-gradient(${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
     // console.log(gradient)
     // console.log(url);
@@ -103,11 +105,11 @@ class App extends Component {
         <div className='app-inner'>
           <div className='bg-gradient' />
           <div className='top-gradient' />
-          { this.state.mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={this.state.menuOpen} /> }
+          { mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={menuOpen} /> }
           <header>
-            <Header hoverCursor={this.hoverCursor} mobileMenu={this.state.mobileMenu} url={url} />
+            <Header hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
           </header>
-          { this.state.menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
+          { menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
           { url.pathname !== '/' && <div className='bg-img' /> }
           <main>
             { url.pathname === '/' && <img className='big-ol-bg' src='/static/images/backgrounds/home_img_lg.png' /> }
@@ -115,7 +117,7 @@ class App extends Component {
           </main>
         </div>
         <footer>
-          <Footer isThin={this.state.isThin} hoverCursor={this.hoverCursor} sponsors={this.props.sponsors} />
+          <Footer isThin={isThin} hoverCursor={this.hoverCursor} sponsors={sponsors} />
         </footer>
         <style jsx global>{`
           a {
@@ -134,8 +136,8 @@ class App extends Component {
             box-sizing: border-box;
             margin: 0;
             display: flex;
-            justify-content: stretch;
-            align-items: stretch;
+            overflow-x: hidden;
+            overflow: ${menuOpen ? 'hidden' : 'auto'};
             font-family: sans-serif;
             width: 100vw;
             height: 100%;
@@ -163,6 +165,7 @@ class App extends Component {
             min-height: 100vh;
             min-width: 100vw;
             box-sizing: border-box;
+            overflow: hidden;
           }
           .app-inner {
             display: flex;
@@ -174,11 +177,13 @@ class App extends Component {
           }
           .bg-gradient {
             width: 100vw;
+            max-width: 100vw;
             min-height: 100vh;
             background-image: ${gradient};
             position: fixed;
             top: 0;
             left: 0;
+            right: 0;
             z-index: ${title === 'Home' ? 2 : 3};
           }
           .bg-img {
