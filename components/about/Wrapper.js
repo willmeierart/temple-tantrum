@@ -28,12 +28,40 @@ class AboutWrapper extends Component {
   }
 
   render () {
+    const transformHeaderText = txt => {
+      if (txt) {
+        return txt.split(' ').map((wd, i) => (
+          <div key={i} className={i === txt.split(' ').length - 1 ? 'last' : ''}>
+            { wd }
+            <style jsx>{`
+              div {
+                text-transform: uppercase;
+                font-family: 'Leafy';
+                color: white;
+                text-align: center;
+              }
+              .last {
+                font-size: 2em;
+              }
+            `}</style>
+          </div>
+        ))
+      }
+    }
     const team = this.props.data.allTeams || []
+    const aboutPage = this.props.data.allAboutPages ? this.props.data.allAboutPages[0] : { description: '' }
     console.log(this.props)
     return (
       <div className='outer-wrapper'>
         <div className='inner-wrapper'>
-          <TeamSection isThin={this.state.isThin} team={team} />
+          <div className='top-text'>
+            <div className='header-text'>{ transformHeaderText(aboutPage.header) || '' }</div>
+            <div className='body'>{ aboutPage.description || '' }</div>
+          </div>
+          <div className='team-wrapper'>
+            <div className='header-text'>{ transformHeaderText(aboutPage.teamSectionHeader) || '' }</div>
+            <TeamSection isThin={this.state.isThin} team={team} />
+          </div>
         </div>
         <style jsx>{`
           .outer-wrapper{
@@ -42,7 +70,30 @@ class AboutWrapper extends Component {
             position: relative;
             z-index: 4;
           }
-          .inner-wrapper{}
+          .inner-wrapper{
+            padding-top: 20vh;
+            position: relative;
+          }
+          .top-text {
+            color: white;
+            font-family: 'Leafy';
+            display: flex;
+            justify-content: center;
+            position: relative;
+          }
+          .team-wrapper {
+            position: relative;
+            margin-top: 10em;
+          }
+          .header-text {
+            position: absolute;
+            top: -5em;
+            left: 5%;
+            transform: rotate(-30deg);
+          }
+          .body {
+            width: 80%;
+          }
         `}</style>
       </div>
     )

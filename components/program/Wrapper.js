@@ -31,7 +31,7 @@ class ProgramsWrapper extends Component {
             margin-bottom: 150px;
           }
           section {
-            margin-top: 25vh;
+            margin-top: 30vh;
           }
           .sublist {
             width: 80%;

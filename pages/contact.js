@@ -26,6 +26,7 @@ const Contact = props => {
           font-size: 2em;
           text-align: center;
           z-index: 4;
+          margin-top: 20vh;
         }
         .email {
           width: 100vw;

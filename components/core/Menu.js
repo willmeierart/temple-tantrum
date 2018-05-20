@@ -23,7 +23,6 @@ const Menu = ({ hoverCursor }) => {
               justify-content: center;
               align-items: center;
               flex-grow: 1;
-              text-align: center;
               line-height: 1.25em;
               padding: .25em;
               border-bottom: ${i !== Object.keys(Routes).length - 1 ? '1px solid white' : 'none'};
@@ -47,7 +46,7 @@ const Menu = ({ hoverCursor }) => {
           top: 0;
           left: 0;
           width: 100vw;
-          height: calc(100vh - 100px);
+          height: 100vh;
           background: #f8d147;
           z-index: 10;
           

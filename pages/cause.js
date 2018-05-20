@@ -35,7 +35,7 @@ const Cause = props => {
           height: 70vh;
           position: relative;
           margin-left: 10%;
-          margin-top: 20vh;
+          margin-top: 30vh;
           flex-grow: 1;
           height: 100%;
           font-family: Leafy;

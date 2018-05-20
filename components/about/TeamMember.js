@@ -1,12 +1,13 @@
 const TeamMember = ({ member, L, isLast, isThin }) => {
   console.log(isThin)
-  const { bio, image, name } = member
+  const { bio, image, name, tagline } = member
   return (
     <div className='outer-container'>
       <div className='inner-container'>
         <div className='module'>
-          <div className='name'>{name}</div>
+          <div className='tagline'>{tagline}</div>
           <img src={image.url} />
+          <div className='name'>{name}</div>
         </div>
         <div className='bio'>{bio}</div>
       </div>
@@ -15,7 +16,7 @@ const TeamMember = ({ member, L, isLast, isThin }) => {
           {/* height: 25vh; */}
           position: relative;
           margin: 2em;
-          border-bottom: ${!isLast && '1px solid darkred'}
+          {/* border-bottom: ${!isLast && '1px solid darkred'} */}
         }
         .inner-container {
           display: flex;
@@ -37,8 +38,14 @@ const TeamMember = ({ member, L, isLast, isThin }) => {
           object-fit: contain;
           margin: 2em;
         }
+        .tagline {
+          font-size: 2em;
+        }
         img {
           height: 20vh;
+        }
+        .name, .bio {
+          font-family: 'Verlag-Book';
         }
       `}</style>
     </div>

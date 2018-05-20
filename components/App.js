@@ -91,7 +91,7 @@ class App extends Component {
     const { children, title, url, isMobile } = this.props
     const { data: { bgColors, bgImg }, mousePos: { x, y } } = this.state
     const gradient = `linear-gradient(${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
-    console.log(gradient)
+    // console.log(gradient)
     // console.log(url);
     const cursorRoot = '/static/images/cursors/'
     const CURSOR = this.cursors[this.state.cursor]
@@ -191,7 +191,7 @@ class App extends Component {
             background: url('${bgImg}');
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: ${url.pathname === '/' ? 'center bottom' : 'center'};
+            background-position: ${url.pathname === '/about' ? 'center bottom' : 'center'};
             z-index: ${title === 'Home' ? 3 : 2};
           }
           .big-ol-bg {

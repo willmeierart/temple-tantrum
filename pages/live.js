@@ -43,7 +43,7 @@ class LivePage extends Component {
             width: 80%;
             position: relative;
             margin-left: 10%;
-            margin-top: 20vh;
+            margin-top: 30vh;
             margin-bottom: 150px;
             flex-grow: 1;
             height: 100%;
