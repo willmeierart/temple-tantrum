@@ -189,6 +189,7 @@ class App extends Component {
             left: -10vw;
             width: 120vw;
             top: -150px;
+            z-index: 10;
           }
           .bg-gradient {
             width: 100vw;
@@ -241,6 +242,11 @@ class App extends Component {
             height: 25vh;
             background: linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0));
             z-index: 5;
+          }
+          @media screen and (max-width: 700px) {
+            .swoops {
+              top: -180px;
+            }
           }
         `}</style>
       </div>

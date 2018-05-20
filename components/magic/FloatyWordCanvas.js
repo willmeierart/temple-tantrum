@@ -41,7 +41,6 @@ class FloatyWordCanvas extends Component {
       if (!interval) {
         interval = setInterval(() => {
           if (this.state.height !== Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4) {
-            console.log(this.state.height, Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4)
             this.setState({ height: Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4 }, this.updateCanvasSize)
             // this.updateCanvasSize()
           } else {
@@ -72,7 +71,7 @@ class FloatyWordCanvas extends Component {
     } else {
       height = window.outerHeight
     }
-    this.setState({ w: window.outerWidth, h: height })
+    this.setState({ w: window.innerWidth, h: height })
   }
 
   setAllOrigins () {
