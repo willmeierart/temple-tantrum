@@ -75,7 +75,8 @@ const Cause = props => {
           position: relative;
         }
         .logo-wrapper img {
-          height: 100%;
+          {/* height: 100%; */}
+          max-width: 100vw;
         }
         .img-wrapper {
           grid-column: 1/3;
@@ -84,6 +85,7 @@ const Cause = props => {
           object-fit: contain;
         }
         .img-wrapper img {
+          position: absolute;
           width: 100%;
         }
         .txt {
@@ -94,7 +96,19 @@ const Cause = props => {
         .header {
           font-size: 1.25em;
         }
-
+        @media screen and (min-width: 500px) and (max-width: 700px) {
+          {/* .good-cause {
+            left: -5vw;
+            top: -3vh;
+          } */}
+          .img-wrapper img {
+            top: 5vw;
+          }
+        } @media screen and (max-width: 499px) {
+          .img-wrapper img {
+            top: 8vw;
+          }
+        }
       `}</style>
     </AppProvider>
   )

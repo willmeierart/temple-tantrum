@@ -39,29 +39,31 @@ class AboutWrapper extends Component {
                 font-family: 'Leafy';
                 color: white;
                 text-align: center;
+                display: inline-block;
               }
               .last {
                 font-size: 2em;
+                display: block;
               }
             `}</style>
           </div>
         ))
       }
     }
-    const team = this.props.data.allTeams || []
-    const aboutPage = this.props.data.allAboutPages ? this.props.data.allAboutPages[0] : { description: '' }
+    const team = this.props.data.allTeams
+    const aboutPage = this.props.data.allAboutPages ? this.props.data.allAboutPages[0] : {}
     return (
       <div className='outer-wrapper'>
-        <div className='inner-wrapper'>
+        {this.props.data.allAboutPages && <div className='inner-wrapper'>
           <div className='top-text'>
-            <div className='header-text'>{ transformHeaderText(aboutPage.header) || '' }</div>
-            <div className='body'>{ aboutPage.description || '' }</div>
+            <div className='header-text'>{ transformHeaderText(aboutPage.header) }</div>
+            <div className='body'>{ aboutPage.description }</div>
           </div>
           <div className='team-wrapper'>
-            <div className='header-text'>{ transformHeaderText(aboutPage.teamSectionHeader) || '' }</div>
+            <div className='header-text'>{ transformHeaderText(aboutPage.teamSectionHeader) }</div>
             <TeamSection isThin={this.state.isThin} team={team} />
           </div>
-        </div>
+        </div> }
         <style jsx>{`
           .outer-wrapper{
             margin-top: 20vh;
@@ -89,7 +91,7 @@ class AboutWrapper extends Component {
             position: absolute;
             top: -5em;
             left: 5%;
-            transform: rotate(-30deg);
+            transform: rotate(-20deg);
           }
           .body {
             width: 80%;

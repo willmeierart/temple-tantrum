@@ -17,9 +17,9 @@ class ProgramsWrapper extends Component {
     return (
       <div className='outer-wrapper'>
         <section>
-          <div className='subnav'>
+          { !this.props.isMobile && <div className='subnav'>
             <SubList hoverCursor={this.props.onHoverCursor} setActiveFilter={this.props.setActiveFilter} filters={this.props.filters} filter={this.props.filter} />
-          </div>
+          </div> }
           <div className='list-wrapper'>
             <ProgramList hoverCursor={this.props.onHoverCursor} filter={this.props.filter} programs={this.props.programs} />
           </div>
@@ -47,7 +47,7 @@ class ProgramsWrapper extends Component {
 
 function mapStateToProps (state) {
   return {
-    // isMobile: state.env.isMobile,
+    isMobile: state.env.isMobile
     // dims: state.env.dims,
     // cursorHovered: state.env.cursorHovered,
     // sponsors: state.cachedData.sponsors

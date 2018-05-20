@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 import AppProvider from '../lib/redux/AppProvider'
 import Head from '../components/Head'
 import { graphql } from 'react-apollo'
@@ -9,19 +10,27 @@ class LivePage extends Component {
   componentDidMount () {
   }
   render () {
-    const { data: { allLivePages } } = this.props
-    const stuff = allLivePages ? allLivePages[0] : { musicLineup: { url: '' }, artistLineup: { url: '' }, entertainmentLineup: { url: '' } }
+    const { data: { allLivePages, allGenerals } } = this.props
+    // const stuff = allLivePages ? allLivePages[0] : {}
+    // console.log(stuff)
+    const conds = typeof allLivePages !== 'undefined'
+    let date = {}
+    if (typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined') {
+      const general = allGenerals[0] || {}
+      date.start = moment(general.day1Time).format('MMM Do')
+      date.end = moment(general.day2Time).format('MMM Do')
+    }
     
     return (
       <AppProvider {...this.props} title='Live'>
         <Head title='Live' />
-        <section>
+        { conds && <section>
           {/* <div className='page-title'>Live</div> */}
-          <div className='the-music'>THE MUSIC</div>
-          {/* <div className='dates'>
-            <h3>SEPT 1st</h3>
-            <h3>SEPT 2nd</h3>
-          </div> */}
+          {/* <div className='the-music'>THE MUSIC</div> */}
+          <div className='dates'>
+            <h3>{date.start}</h3>
+            <h3>{date.end}</h3>
+          </div>
           <div className='lineups'>
             <div className='content'>
               <h2>MUSIC</h2>
@@ -36,7 +45,7 @@ class LivePage extends Component {
               <div className='entertainment-lineup lineup-img' />
             </div>
           </div>
-        </section>
+        </section> }
         <style jsx>{`
           section {
             width: 80%;
@@ -62,9 +71,9 @@ class LivePage extends Component {
           .dates {
             display: flex;
             justify-content: space-around;
-            width: 50%;
+            width: 80%;
             {/* height: 150px; */}
-            margin-left: 25%;
+            margin-left: 10%;
           }
           .lineups {
             display: flex;
@@ -105,17 +114,17 @@ class LivePage extends Component {
             max-height: 500px;
           }
           .music-lineup {
-            background: url('${stuff.musicLineup.url}');
+            background: url('${conds ? allLivePages[0].musicLineup.url : ""}');
             background-size: contain;
             background-repeat: no-repeat;
           }
           .entertainment-lineup {
-            background: url('${stuff.entertainmentLineup.url}');
+            background: url('${conds ? allLivePages[0].entertainmentLineup.url : ""}');
             background-size: contain;
             background-repeat: no-repeat;
           }
           .artist-lineup {
-            background: url('${stuff.artistLineup.url}');
+            background: url('${conds ? allLivePages[0].artistLineup.url : ""}');
             background-size: contain;
             background-repeat: no-repeat;
           }

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 
-const DateModule = props => {
+const DateModule = ({ date }) => {
+  console.log(date);
   return (
     <div className='outer-container'>
       <div className='inner-container'>
-        <div>SEPT 01-02 2018</div>
+        <div>{date.start}-{date.end}</div>
         <div className='ln2'>DENVER, CO</div>
       </div>
       <style jsx>{`

@@ -1,10 +1,11 @@
-import { binder } from '../../lib/_utils'
 import React, { Component } from 'react'
+import moment from 'moment'
 import Socials from './Socials'
 import DateModule from './DateModule'
 import HomeTextBox from './HomeTextBox'
 import { hoverCursor } from '../../lib/redux/actions'
 import { connect } from 'react-redux'
+import { binder } from '../../lib/_utils'
 
 class HomeWrapper extends Component {
   constructor (props) {
@@ -29,6 +30,7 @@ class HomeWrapper extends Component {
   }
 
   render () {
+    console.log(this.props)
     const { data: { allGenerals, allHomeTextBoxes } } = this.props
     
     let socials = {}
@@ -39,6 +41,12 @@ class HomeWrapper extends Component {
       socials.yt = general.youtubeLink
       socials.tw = general.twitterLink
     }
+    let date = {}
+    if (typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined') {
+      const general = allGenerals[0] || {}
+      date.start = moment(general.day1Time).format('MMM D')
+      date.end = moment(general.day2Time).format('D YYYY')
+    }
     return (
       <div>
         <section>
@@ -46,7 +54,7 @@ class HomeWrapper extends Component {
             <Socials socials={socials} hoverCursor={this.props.onHoverCursor} />
           </div>
           <div className='date-wrapper'>
-            <DateModule />
+            <DateModule date={date} />
           </div>
           <div className='text-block-wrapper'>{allHomeTextBoxes && this.renderTextBoxes()}</div>
           {/* <div className='img-wrapper'>

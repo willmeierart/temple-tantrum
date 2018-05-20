@@ -56,7 +56,7 @@ const HomeTextBox = ({ data, L, hoverCursor }) => {
           font-family: 'Leafy';
           font-weight: bold;
           font-size: 7em;
-          transform: rotate(-30deg);
+          transform: rotate(-20deg);
           color: #5fa38f;
           position: absolute;
           z-index: 15;
