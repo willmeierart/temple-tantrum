@@ -5,6 +5,17 @@ import AppProvider from '../lib/redux/AppProvider'
 import Head from '../components/Head'
 
 const Cause = props => {
+  let isMobile
+  const checkIfMobile = () => {
+    if (typeof window !== 'undefined') {
+      if (typeof window.orientation !== 'undefined') {
+        isMobile = true
+      }
+    } else {
+      setTimeout(checkIfMobile, 200)
+    }
+  }
+  checkIfMobile()
   const cause = props.data.allCausePages ? props.data.allCausePages[0] : { body: '<div/>', header: '' }
   const { body, header } = cause
   return (
@@ -19,9 +30,9 @@ const Cause = props => {
           <div className='logo-wrapper'>
             <img src='/static/images/logos/pforum.png' />
           </div>
-          <div className='img-wrapper'>
+          { !isMobile && <div className='img-wrapper'>
             <img src='/static/images/cause-img.png' />
-          </div>
+          </div> }
           <div className='txt'>
             <div className='header'>{ header }</div>
             <div className='body' dangerouslySetInnerHTML={{ __html: body }} />
@@ -90,7 +101,7 @@ const Cause = props => {
         }
         .txt {
           grid-row: 3/4;
-          grid-column: 3/4;
+          grid-column: ${!isMobile ? '3/4' : '1/4'};
           padding: 1.5em;
         }
         .header {

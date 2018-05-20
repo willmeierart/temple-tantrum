@@ -40,6 +40,11 @@ const Contact = props => {
         .email:hover {
           color: rgba(249, 209, 71);
         }
+        @media screen and (max-width: 700px) {
+          .email {
+            font-size: .5em;
+          }
+        }
       `}</style>
     </AppProvider>
   )
