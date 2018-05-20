@@ -2,19 +2,19 @@ import PropTypes from 'prop-types'
 import { Facebook, Instagram, Twitter } from '../assets/Socials'
 import Link from 'next/link'
 
-const Socials = props => {
+const Socials = ({ socials, hoverCursor }) => {
   return (
     <div className='outer-container'>
       <div className='inner-container'>
         <div className='follow-us'>FOLLOW US</div>
         <div className='icons-wrapper'>
-          <a href='https://facebook.com'>
+          <a onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} href={socials.fb}>
             <Facebook />
           </a>
-          <a href='https://instagram.com'>
+          <a onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} href={socials.ig}>
             <Instagram />
           </a>
-          <a href='https://twitter.com'>
+          <a onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} href={socials.tw}>
             <Twitter />
           </a>
         </div>

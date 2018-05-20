@@ -75,7 +75,7 @@ const NavBar = ({ url, hoverCursor }) => {
         }
         .coming-soon-wrapper {
           position: absolute;
-          right: 20px;
+          right: 4vw;
           bottom: 60px;
           display: flex;
           justify-content: flex-end;

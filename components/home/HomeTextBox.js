@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const HomeTextBox = ({ data, L }) => {
+const HomeTextBox = ({ data, L, hoverCursor }) => {
   console.log(data);
   const { title, body, backgroundText, linktext, linkURL } = data
   return (
@@ -10,7 +10,7 @@ const HomeTextBox = ({ data, L }) => {
         <div className='main-content'>
           <div className='title'>{ title }</div>
           <div className='description'>{ body }</div>
-          <div className='link'>
+          <div onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} className='link'>
             <Link href={linkURL}><a>{linktext}</a></Link>
           </div>
         </div>

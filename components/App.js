@@ -116,9 +116,9 @@ class App extends Component {
             {children}
           </main>
         </div>
-        <footer>
+        { !menuOpen && <footer>
           <Footer isThin={isThin} hoverCursor={this.hoverCursor} sponsors={sponsors} />
-        </footer>
+        </footer> }
         <style jsx global>{`
           a {
             text-decoration: none;
@@ -140,7 +140,7 @@ class App extends Component {
             overflow: ${menuOpen ? 'hidden' : 'auto'};
             font-family: sans-serif;
             width: 100vw;
-            height: 100%;
+            height: ${menuOpen ? '100vh' : '100%'};
             position: relative;
           }
           header {

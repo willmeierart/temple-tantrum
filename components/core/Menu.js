@@ -26,7 +26,7 @@ const Menu = ({ hoverCursor }) => {
               line-height: 1.25em;
               padding: .25em;
               border-bottom: ${i !== Object.keys(Routes).length - 1 ? '1px solid white' : 'none'};
-              width: 100%;
+              width: 100vw;
             }
             a {
               

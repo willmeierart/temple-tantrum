@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 import Socials from './Socials'
 import DateModule from './DateModule'
 import HomeTextBox from './HomeTextBox'
+import { hoverCursor } from '../../lib/redux/actions'
+import { connect } from 'react-redux'
 
-class componentName extends Component {
+class HomeWrapper extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -21,7 +23,7 @@ class componentName extends Component {
     // const modules = data ? data.allHomeTextBoxes : []
     console.log(allHomeTextBoxes)
     return allHomeTextBoxes.map((mod, i) => (
-      <HomeTextBox key={i} data={mod} L={i % 2 === 0} />
+      <HomeTextBox hoverCursor={this.props.onHoverCursor} key={i} data={mod} L={i % 2 === 0} />
     ))
     // }
   }
@@ -30,16 +32,27 @@ class componentName extends Component {
   }
 
   render () {
+    console.log(this.props)
+    const { data: { allGenerals, allHomeTextBoxes } } = this.props
+    
+    let socials = {}
+    if (typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined') {
+      const general = allGenerals[0] || {}
+      socials.fb = general.facebookLink
+      socials.ig = general.instagramLink
+      socials.yt = general.youtubeLink
+      socials.tw = general.twitterLink
+    }
     return (
       <div>
         <section>
           <div className='socials-wrapper'>
-            <Socials />
+            <Socials socials={socials} hoverCursor={this.props.onHoverCursor} />
           </div>
           <div className='date-wrapper'>
             <DateModule />
           </div>
-          <div className='text-block-wrapper'>{this.props.data.allHomeTextBoxes && this.renderTextBoxes()}</div>
+          <div className='text-block-wrapper'>{allHomeTextBoxes && this.renderTextBoxes()}</div>
           {/* <div className='img-wrapper'>
             <img src='/static/images/home_text.png' />
           </div> */}
@@ -83,6 +96,16 @@ class componentName extends Component {
             z-index: 10;
             margin-bottom: 40vw;
           }
+          {/* @media screen and (min-width: 1000px) and (max-width: 1500px) {
+            .socials-wrapper {
+              top: -120vh;
+              right: 5vw;
+            }
+            .date-wrapper {
+              top: -120vh;
+              left: 5vw;
+            }
+          }  */}
           @media screen and (max-width: 1000px) {
             .socials-wrapper {
               top: -70vh;
@@ -99,8 +122,14 @@ class componentName extends Component {
   }
 }
 
-componentName.propTypes = {
+function mapStateToProps (state) {
+  return {}
+}
 
-};
+function mapDispatchToProps (dispatch) {
+  return {
+    onHoverCursor: bool => dispatch(hoverCursor(bool))
+  }
+}
 
-export default componentName;
+export default connect(mapStateToProps, mapDispatchToProps)(HomeWrapper)

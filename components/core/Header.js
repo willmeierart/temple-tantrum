@@ -19,7 +19,7 @@ const Header = ({ url, mobileMenu, hoverCursor }) => (
         width: 100%;
       }
       .header-inner {
-        padding: 4em;
+        padding: 4em 10vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
