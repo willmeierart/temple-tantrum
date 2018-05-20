@@ -89,8 +89,10 @@ class App extends Component {
 
   render () {
     const { children, title, url, isMobile } = this.props
-    // console.log(url);
     const { data: { bgColors, bgImg }, mousePos: { x, y } } = this.state
+    const gradient = `linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
+    console.log(gradient)
+    // console.log(url);
     const cursorRoot = '/static/images/cursors/'
     const CURSOR = this.cursors[this.state.cursor]
     return (
@@ -150,7 +152,6 @@ class App extends Component {
             z-index: 1200;
           }
           main {
-            {/* position: ${ url.pathname === '/' ? 'absolute' : 'regular' }; */}
             z-index: 4;
             top: 0;
             height: 100%;
@@ -174,7 +175,7 @@ class App extends Component {
           .bg-gradient {
             width: 100vw;
             min-height: 100vh;
-            background: linear-gradient(to bottom, ${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5));
+            background: ${gradient};
             position: fixed;
             top: 0;
             left: 0;
