@@ -10,6 +10,10 @@ import Routes from '../server/routes'
 import Menu from './core/Menu'
 import MenuButton from './core/MenuButton'
 import { binder } from '../lib/_utils'
+import Swoop01 from './swoops/swoop01'
+import Swoop02 from './swoops/swoop02'
+import Swoop03 from './swoops/swoop03'
+import Swoop04 from './swoops/swoop04'
 
 // import globalStyles from '../../styles/index.scss'
 
@@ -101,6 +105,10 @@ class App extends Component {
         {/* <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> */}
         { !isMobile && <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> }
         <FloatyWordCanvas />
+        <div className='swoops'>
+          <Swoop04 />
+          <Swoop02 />
+        </div>
         <div className='app-inner'>
           <div className='bg-gradient' />
           <div className='top-gradient' />
@@ -173,6 +181,14 @@ class App extends Component {
             width: 100%;
             min-width: 100vw;
             min-height: 100vh;
+          }
+          .swoops {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            left: -10vw;
+            width: 120vw;
+            top: -150px;
           }
           .bg-gradient {
             width: 100vw;
