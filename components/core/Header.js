@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import NavBar from './NavBar'
 
-const Header = ({ url, mobileMenu, hoverCursor }) => (
+const Header = ({ url, mobileMenu, hoverCursor, ticketing }) => (
   <div className='header-outer'>
     <div className='header-inner'>
       <Link href='/'>
@@ -9,12 +9,12 @@ const Header = ({ url, mobileMenu, hoverCursor }) => (
           <img onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} src='/static/images/logos/tt.png' />
         </div>
       </Link>
-      { !mobileMenu && <NavBar hoverCursor={hoverCursor} url={url} /> }
+      { !mobileMenu && <NavBar ticketing={ticketing} hoverCursor={hoverCursor} url={url} /> }
       
     </div>
     <style jsx>{`
       .header-outer {
-        z-index: 6;
+        z-index: 11;
         position: absolute;
         width: 100%;
       }

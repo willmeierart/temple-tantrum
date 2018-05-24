@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Facebook, Instagram, Twitter } from '../assets/Socials'
+import { Facebook, Instagram, Twitter, Youtube } from '../assets/Socials'
 import Link from 'next/link'
 
 const Socials = ({ socials, hoverCursor }) => {
@@ -17,6 +17,9 @@ const Socials = ({ socials, hoverCursor }) => {
           <a onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} href={socials.tw}>
             <Twitter />
           </a>
+          <a onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} href={socials.yt}>
+            <Youtube />
+          </a>
         </div>
       </div>
       <style jsx>{`
@@ -27,7 +30,7 @@ const Socials = ({ socials, hoverCursor }) => {
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
-          width: 100px;
+          width: 120px;
           font-size: .5em;
         }
         .icons-wrapper {

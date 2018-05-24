@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { graphql } from 'react-apollo'
 import { checkIfMobile, getVPDims, setSponsors, hoverCursor } from '../lib/redux/actions'
 import Header from './core/Header'
 import Footer from './core/Footer'
@@ -10,10 +11,10 @@ import Routes from '../server/routes'
 import Menu from './core/Menu'
 import MenuButton from './core/MenuButton'
 import { binder } from '../lib/_utils'
-import Swoop01 from './swoops/swoop01'
 import Swoop02 from './swoops/swoop02'
-import Swoop03 from './swoops/swoop03'
 import Swoop04 from './swoops/swoop04'
+import withData from '../lib/withData'
+import { general } from '../lib/queries'
 
 // import globalStyles from '../../styles/index.scss'
 
@@ -93,7 +94,7 @@ class App extends Component {
   }
 
   render () {
-    const { children, title, url, isMobile, sponsors } = this.props
+    const { children, title, url, isMobile, sponsors, data: { allGenerals } } = this.props
     const { data: { bgColors, bgImg }, mousePos: { x, y }, menuOpen, mobileMenu, isThin } = this.state
     const gradient = `linear-gradient(${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
     // console.log(gradient)
@@ -114,7 +115,7 @@ class App extends Component {
           <div className='top-gradient' />
           { mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={menuOpen} /> }
           <header>
-            <Header hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
+            <Header ticketing={{ url: allGenerals ? allGenerals[0].ticketingUrl : '', avail: allGenerals ?  allGenerals[0].ticketsAvailable : false }} hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
           </header>
           { menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
           { url.pathname !== '/' && <div className='bg-img' /> }
@@ -272,7 +273,11 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withData(
+    graphql(general)(App)
+  )
+)
 // export default App
 
 App.propTypes = {

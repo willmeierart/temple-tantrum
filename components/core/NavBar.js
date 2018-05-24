@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Routes from '../../server/routes'
 
-const NavBar = ({ url, hoverCursor }) => {
+const NavBar = ({ url, hoverCursor, ticketing }) => {
   const renderLinks = () => (
     Object.keys(Routes).reduce((list, route) => {
       const R = `/${route}`
@@ -42,11 +42,11 @@ const NavBar = ({ url, hoverCursor }) => {
         <ul className='navlinks'>
           { renderLinks() }
           <li onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} className='get-tickets'>
-            <a href='#'>GET TICKETS</a>
+            <a href={ticketing.url}>GET TICKETS</a>
           </li>
-          <div className='coming-soon-wrapper'>
+          { !ticketing.avail && <div className='coming-soon-wrapper'>
             <img src='/static/images/coming_soon.png' />
-          </div>
+          </div> }
         </ul>
       </div>
       <style jsx>{`
