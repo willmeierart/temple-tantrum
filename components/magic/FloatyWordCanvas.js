@@ -24,9 +24,6 @@ class FloatyWordCanvas extends Component {
   }
 
   async componentDidMount () {
-    await this.updateCanvasSize()
-    await this.setAllOrigins()
-    this.initCanvas()
     window.addEventListener('resize', () => {
       this.updateCanvasSize()
     })
@@ -37,15 +34,21 @@ class FloatyWordCanvas extends Component {
     }
     let interval
     if (typeof document !== 'undefined') {
+      await this.updateCanvasSize()
+      await this.setAllOrigins()
+      this.initCanvas()
       await initHeight()
+      let i = 0
       if (!interval) {
         interval = setInterval(() => {
-          if (this.state.height !== Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4) {
+          i++
+          if ((this.state.height !== Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4) && i < 10) {
             this.setState({ height: Math.max(this.body.scrollHeight, this.body.offsetHeight, window.outerHeight) - 4 }, this.updateCanvasSize)
             // this.updateCanvasSize()
           } else {
             clearInterval(interval)
           }
+          console.log('interval firing')
         }, 1000)
       }
     } else {

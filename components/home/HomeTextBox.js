@@ -32,7 +32,7 @@ const HomeTextBox = ({ data, L, hoverCursor }) => {
           justify-content: center;
           align-items: center;
           background-color: #67bfad;
-          padding: 3em 10vw;
+          padding: 0 10vw;
           position: relative;
         }
         .main-content {

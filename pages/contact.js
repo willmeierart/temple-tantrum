@@ -3,7 +3,7 @@ import Head from '../components/Head'
 
 const Contact = props => {
   const email = 'templetantrumfest@gmail.com'
-  const splitEmail = email.split('').map(l => <span>{ l }</span>)
+  const splitEmail = email.split('').map((l, i) => <span key={i}>{ l }</span>)
   return (
     <AppProvider {...props} title='Contact'>
       <Head title='Contact' />
@@ -16,7 +16,7 @@ const Contact = props => {
           color: white;
           font-family: leafy;
           width: 100vw;
-          height: 100vh;
+          height: 110vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -26,13 +26,13 @@ const Contact = props => {
           font-size: 2em;
           text-align: center;
           z-index: 4;
-          margin-top: 20vh;
+          margin-top: 10vh;
         }
         .email {
           width: 100vw;
           display: flex;
           justify-content: center;
-          margin-top: 2em;
+          {/* margin-top: 2em; */}
           font-size: 2em;
           {/* white-space: pre-wrap; */}
           flex-wrap: wrap;

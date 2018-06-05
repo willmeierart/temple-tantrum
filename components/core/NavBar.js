@@ -72,10 +72,11 @@ const NavBar = ({ url, hoverCursor, ticketing }) => {
           padding: 1em;
           background: #F96E3E;
           letter-spacing: .2em;
+          white-space: nowrap;
         }
         .coming-soon-wrapper {
           position: absolute;
-          right: 4vw;
+          right: 6vw;
           bottom: 60px;
           display: flex;
           justify-content: flex-end;

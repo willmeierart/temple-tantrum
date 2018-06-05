@@ -31,7 +31,8 @@ class App extends Component {
       mobileMenu: false,
       menuOpen: false,
       cursorHover: false,
-      isThin: false
+      isThin: false,
+      isSafari: false
     }
     binder(this, ['setData', 'updateCursorOnScroll', 'toggleMenu', 'hoverCursor'])
     this.cursors = ['Eyeball.png', 'Fire.png', 'Mario.png', 'PointerDude.png', 'RainbowTail.png', 'Strawberry.png', 'anarchy.png', 'banana.gif', 'dragon.png', 'gauntlet.png', 'lightsaber.gif', 'partyhat.png', 'skull.gif', 'smiley.gif', 'spaceship.gif']
@@ -39,8 +40,18 @@ class App extends Component {
   async componentDidMount () {
     this.setState({ mobileMenu: window.innerWidth < 900 })
     this.setData()
+    const checkWindow = () => {
+      if (typeof window !== 'undefined') {
+        const isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)
+        console.log(isSafari)
+        this.setState({ isSafari })
+      } else {
+        setTimeout(checkWindow, 500)
+      }
+    }
+    await checkWindow()
     await this.props.onCheckIfMobile()
-    if (!this.props.isMobile) {
+    if (!this.props.isMobile && !this.state.isSafari) {
       window.addEventListener('mousemove', e => {
         const { scrollX, scrollY } = window
         const mousePos = { x: e.clientX + scrollX, y: e.clientY + scrollY }
@@ -104,7 +115,7 @@ class App extends Component {
     return (
       <div className='app-outer' onWheel={e => { this.updateCursorOnScroll(e) }}>
         {/* <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> */}
-        { !isMobile && <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> }
+        { !isMobile && !this.state.isSafari && <div id='CURSOR' className={this.props.cursorHovered ? 'active' : ''} /> }
         <FloatyWordCanvas />
         <div className='swoops'>
           <Swoop04 />
@@ -115,7 +126,7 @@ class App extends Component {
           <div className='top-gradient' />
           { mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={menuOpen} /> }
           <header>
-            <Header ticketing={{ url: allGenerals ? allGenerals[0].ticketingUrl : '', avail: allGenerals ?  allGenerals[0].ticketsAvailable : false }} hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
+            <Header ticketing={{ url: allGenerals ? allGenerals[0].ticketingUrl : '', avail: allGenerals ? allGenerals[0].ticketsAvailable : false }} hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
           </header>
           { menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
           { url.pathname !== '/' && <div className='bg-img' /> }
@@ -136,7 +147,7 @@ class App extends Component {
             list-style: none;
           }
           * {
-            cursor: none!important;
+            cursor: ${!this.state.isSafari && 'none!important'};
             background-repeat: no-repeat;
             background-size: contain;
           }
@@ -225,8 +236,8 @@ class App extends Component {
           #CURSOR {
             background: url('${cursorRoot}${CURSOR}');
             position: absolute;
-            top: ${y - 5}px;
-            left: ${x - 3}px;
+            top: ${y - 10}px;
+            left: ${this.state.cursor === this.cursors.indexOf('spaceship.gif') ? x - 20 : this.props.cursorHovered ? x - 16 : x - 10}px;
             width: 50px;
             height: 50px;
             z-index: 1000000000000000000000000000000000000000000000000;

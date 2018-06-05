@@ -111,13 +111,19 @@ class HomeWrapper extends Component {
             }
           }  */}
           @media screen and (max-width: 1000px) {
-            .socials-wrapper {
+            .socials-wrapper, .date-wrapper {
               top: -70vh;
               right: 5vw;
             }
-            .date-wrapper {
-              top: -70vh;
-              left: 5vw;
+          }
+          @media screen and (min-width: 1500px) and (max-width: 1700px) {
+            .socials-wrapper, .date-wrapper {
+              top: -120vh;
+            }
+          }
+          @media screen and (min-width: 1700px) {
+            .socials-wrapper, .date-wrapper {
+              top: -150vh;
             }
           }
         `}</style>

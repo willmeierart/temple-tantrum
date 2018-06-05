@@ -108,16 +108,18 @@ const Cause = props => {
           font-size: 1.25em;
         }
         @media screen and (min-width: 500px) and (max-width: 700px) {
-          {/* .good-cause {
-            left: -5vw;
-            top: -3vh;
-          } */}
           .img-wrapper img {
             top: 5vw;
           }
-        } @media screen and (max-width: 499px) {
+        }
+        @media screen and (max-width: 499px) {
           .img-wrapper img {
             top: 8vw;
+          }
+        }
+        @media screen and (min-width: 1100px) {
+          section {
+            margin-bottom: 30vw;
           }
         }
       `}</style>
