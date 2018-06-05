@@ -38,88 +38,88 @@ const Cause = props => {
             <div className='body' dangerouslySetInnerHTML={{ __html: body }} />
           </div>
         </div>
-      </section>
-      <style jsx>{`
-        section {
-          width: 80%;
-          height: 70vh;
-          position: relative;
-          margin-left: 10%;
-          margin-top: 30vh;
-          flex-grow: 1;
-          height: 100%;
-          font-family: Leafy;
-          color: white;
-          letter-spacing: 0.125em;
-          margin-bottom: 150px;
-          z-index: 4;
-        }
-        .good-cause {
-          text-align: center;
-          position: absolute;
-          top: 0;
-          left: 5vw;
-          transform: rotate(-20deg);
-          z-index: 20;
-        }
-        .good-cause .cause {
-          font-size: 3em;
-          line-height: 1em;
-        }
-        .content {
-          width: 100%;
-          height: 100%;
-          display: grid;
-          grid-template-rows: 150px 50px 2fr;
-          grid-template-columns: 1fr 1fr 2.75fr;
-        }
-        .logo-wrapper {
-          grid-column: 2/4;
-          grid-row: 1/3;
-          display: flex;
-          flex-grow: 1;
-          flex-direction: column;
-          justify-content: flex-end;
-          align-items: center;
-          position: relative;
-        }
-        .logo-wrapper img {
-          max-width: 100vw;
-        }
-        .img-wrapper {
-          grid-column: 1/3;
-          grid-row: 2/4;
-          position: relative;
-          object-fit: contain;
-        }
-        .img-wrapper img {
-          position: absolute;
-          width: 100%;
-        }
-        .txt {
-          grid-row: 3/4;
-          grid-column: ${!isMobile ? '3/4' : '1/4'};
-          padding: 1.5em;
-        }
-        .header {
-          font-size: 1.25em;
-        }
-        @media screen and (min-width: 500px) and (max-width: 700px) {
-          .img-wrapper img {
-            top: 5vw;
-          }
-        }
-        @media screen and (max-width: 499px) {
-          .img-wrapper img {
-            top: 8vw;
-          }
-        }
-        @media screen and (min-width: 1100px) {
+        <style jsx>{`
           section {
-            margin-bottom: 30vw;
+            width: 80%;
+            height: 70vh;
+            position: relative;
+            margin-left: 10%;
+            margin-top: 30vh;
+            flex-grow: 1;
+            height: 100%;
+            font-family: Leafy;
+            color: white;
+            letter-spacing: 0.125em;
+            margin-bottom: 150px;
+            z-index: 4;
           }
-        }
-      `}</style>
+          .good-cause {
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 5vw;
+            transform: rotate(-20deg);
+            z-index: 20;
+          }
+          .good-cause .cause {
+            font-size: 3em;
+            line-height: 1em;
+          }
+          .content {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: 150px 50px 2fr;
+            grid-template-columns: 1fr 1fr 2.75fr;
+          }
+          .logo-wrapper {
+            grid-column: 2/4;
+            grid-row: 1/3;
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+          }
+          .logo-wrapper img {
+            max-width: 100vw;
+          }
+          .img-wrapper {
+            grid-column: 1/3;
+            grid-row: 2/4;
+            position: relative;
+            object-fit: contain;
+          }
+          .img-wrapper img {
+            position: absolute;
+            width: 100%;
+          }
+          .txt {
+            grid-row: 3/4;
+            grid-column: ${!isMobile ? '3/4' : '1/4'};
+            padding: 1.5em;
+          }
+          .header {
+            font-size: 1.25em;
+          }
+          @media screen and (min-width: 500px) and (max-width: 700px) {
+            .img-wrapper img {
+              top: 5vw;
+            }
+          }
+          @media screen and (max-width: 499px) {
+            .img-wrapper img {
+              top: 8vw;
+            }
+          }
+          @media screen and (min-width: 1100px) {
+            section {
+              margin-bottom: 30vw;
+            }
+          }
+        `}</style>
+      </section>
     </AppProvider>
   )
 }

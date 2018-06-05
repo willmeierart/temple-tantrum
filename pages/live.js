@@ -45,81 +45,81 @@ class LivePage extends Component {
               <div className='entertainment-lineup lineup-img' />
             </div>
           </div>
-        </section> }
-        <style jsx>{`
-          section {
-            width: 80%;
-            position: relative;
-            margin-left: 10%;
-            margin-top: 30vh;
-            margin-bottom: 150px;
-            flex-grow: 1;
-            height: 100%;
-            font-family: Leafy;
-            color: white;        
-            letter-spacing: .125em;
-            z-index: 4;
-          }
-          .the-music {
-            font-size: 1.75em;
-            position: absolute;
-            top: 5vh;
-            left: 5vw;
-            transform: rotate(-20deg);
+          <style jsx>{`
+            section {
+              width: 80%;
+              position: relative;
+              margin-left: 10%;
+              margin-top: 30vh;
+              margin-bottom: 150px;
+              flex-grow: 1;
+              height: 100%;
+              font-family: Leafy;
+              color: white;        
+              letter-spacing: .125em;
+              z-index: 4;
+            }
+            .the-music {
+              font-size: 1.75em;
+              position: absolute;
+              top: 5vh;
+              left: 5vw;
+              transform: rotate(-20deg);
 
-          }
-          .dates {
-            display: flex;
-            justify-content: space-around;
-            width: 80%;
-            margin-left: 10%;
-          }
-          .lineups {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-grow: 1;
-            height: 100%;
-            
-          }
-          .content {
-            text-align: center;
-            height: 100%;
-            
-          }
-          h3 {
-            font-size: 3em;
-            color: black;
-          }
-          h2 {
-            font-size: 3em;
-            width: 60vw;
-          }
-          h2.notfirst {
-            margin-top: 100px;
-          }
-          .lineup-img {
-            width: 100%;
-            display: flex;
-            height: 50vw;
-            opacity: .6;
-          }
-          .music-lineup {
-            background: url('${conds ? allLivePages[0].musicLineup.url : ""}');
-            background-size: contain;
-            background-repeat: no-repeat;
-          }
-          .entertainment-lineup {
-            background: url('${conds ? allLivePages[0].entertainmentLineup.url : ""}');
-            background-size: contain;
-            background-repeat: no-repeat;
-          }
-          .artist-lineup {
-            background: url('${conds ? allLivePages[0].artistLineup.url : ""}');
-            background-size: contain;
-            background-repeat: no-repeat;
-          }
-        `}</style>
+            }
+            .dates {
+              display: flex;
+              justify-content: space-around;
+              width: 80%;
+              margin-left: 10%;
+            }
+            .lineups {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              flex-grow: 1;
+              height: 100%;
+              
+            }
+            .content {
+              text-align: center;
+              height: 100%;
+              
+            }
+            h3 {
+              font-size: 3em;
+              color: black;
+            }
+            h2 {
+              font-size: 3em;
+              width: 60vw;
+            }
+            h2.notfirst {
+              margin-top: 100px;
+            }
+            .lineup-img {
+              width: 100%;
+              display: flex;
+              height: 50vw;
+              opacity: .6;
+            }
+            .music-lineup {
+              background: url('${conds ? allLivePages[0].musicLineup.url : ""}');
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .entertainment-lineup {
+              background: url('${conds ? allLivePages[0].entertainmentLineup.url : ""}');
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .artist-lineup {
+              background: url('${conds ? allLivePages[0].artistLineup.url : ""}');
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          `}</style>
+        </section> }
       </AppProvider>
     )
   }

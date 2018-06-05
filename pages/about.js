@@ -16,7 +16,6 @@ class About extends Component {
         <section>
           <AboutWrapper data={this.props.data} />
         </section>
-        <style jsx>{``}</style>
       </AppProvider>
     )
   }
