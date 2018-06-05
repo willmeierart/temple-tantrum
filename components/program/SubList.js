@@ -31,7 +31,6 @@ const ProgramList = ({ filters, filter, setActiveFilter, hoverCursor }) => {
           width: 100%;
           display: flex;
           justify-content: center;
-          {/* overflow: scroll; */}
         }
         .inner-container {
           width: 80vw;

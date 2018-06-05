@@ -65,7 +65,6 @@ const HomeTextBox = ({ data, L, hoverCursor }) => {
           display: flex;
           justify-content: center;
           align-items: center;
-          {/* align-content: flex-start; */}
           margin-left: -10vw;
         }
         .link, .link a {

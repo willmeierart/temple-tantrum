@@ -31,7 +31,6 @@ const EventModule = ({ program, hoverCursor }) => {
         }
         img {
           max-width: 30vw;
-          {/* height: 30vw; */}
         }
       `}</style>
     </div>

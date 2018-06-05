@@ -38,7 +38,6 @@ const ProgramList = ({ programs, filter, hoverCursor }) => {
           width: 100%;
           display: flex;
           justify-content: center;
-          {/* overflow: scroll; */}
         }
         .none-wrapper {
           color: rgba(249, 209, 71);

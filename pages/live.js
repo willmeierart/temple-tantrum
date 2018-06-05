@@ -72,32 +72,23 @@ class LivePage extends Component {
             display: flex;
             justify-content: space-around;
             width: 80%;
-            {/* height: 150px; */}
             margin-left: 10%;
           }
           .lineups {
             display: flex;
             flex-direction: column;
-            {/* justify-content: space-around; */}
             align-items: center;
             flex-grow: 1;
             height: 100%;
             
           }
           .content {
-            {/* display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            flex-grow: 1; */}
             text-align: center;
             height: 100%;
-            {/* border: 1px solid darkred; */}
             
           }
           h3 {
             font-size: 3em;
-            {/* line-height: .25em; */}
             color: black;
           }
           h2 {

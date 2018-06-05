@@ -39,9 +39,6 @@ const Socials = ({ socials, hoverCursor }) => {
           display: flex;
           justify-content: space-between;
         }
-        a {
-          {/* cursor: pointer; */}
-        }
 
       `}</style>
     </div>

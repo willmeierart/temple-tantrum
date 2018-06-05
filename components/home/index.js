@@ -100,16 +100,6 @@ class HomeWrapper extends Component {
             z-index: 10;
             margin-bottom: 40vw;
           }
-          {/* @media screen and (min-width: 1000px) and (max-width: 1500px) {
-            .socials-wrapper {
-              top: -120vh;
-              right: 5vw;
-            }
-            .date-wrapper {
-              top: -120vh;
-              left: 5vw;
-            }
-          }  */}
           @media screen and (max-width: 1000px) {
             .socials-wrapper, .date-wrapper {
               top: -70vh;

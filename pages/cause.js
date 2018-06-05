@@ -51,7 +51,6 @@ const Cause = props => {
           font-family: Leafy;
           color: white;
           letter-spacing: 0.125em;
-          {/* border-right: 1px solid red; */}
           margin-bottom: 150px;
           z-index: 4;
         }
@@ -82,11 +81,9 @@ const Cause = props => {
           flex-direction: column;
           justify-content: flex-end;
           align-items: center;
-          {/* object-fit: cover; */}
           position: relative;
         }
         .logo-wrapper img {
-          {/* height: 100%; */}
           max-width: 100vw;
         }
         .img-wrapper {

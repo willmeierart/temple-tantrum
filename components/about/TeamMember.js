@@ -12,10 +12,8 @@ const TeamMember = ({ member, L, isLast, isThin }) => {
       </div>
       <style jsx>{`
         .outer-container {
-          {/* height: 25vh; */}
           position: relative;
           margin: 2em;
-          {/* border-bottom: ${!isLast && '1px solid darkred'} */}
         }
         .inner-container {
           display: flex;

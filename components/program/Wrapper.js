@@ -37,8 +37,6 @@ class ProgramsWrapper extends Component {
             width: 80%;
             margin-left: 10%;
           }
-          .list-wrapper {
-          }
         `}</style>
       </div>
     )

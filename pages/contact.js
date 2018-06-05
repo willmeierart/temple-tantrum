@@ -32,9 +32,7 @@ const Contact = props => {
           width: 100vw;
           display: flex;
           justify-content: center;
-          {/* margin-top: 2em; */}
           font-size: 2em;
-          {/* white-space: pre-wrap; */}
           flex-wrap: wrap;
         }
         .email:hover {
