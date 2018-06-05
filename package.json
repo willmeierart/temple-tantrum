@@ -6,7 +6,7 @@
     "dev": "next",
     "next": "next",
     "build": "next build",
-    "start": "NODE_ENV=production next"
+    "start": "NODE_ENV=production next start"
   },
   "author": "Will Meier",
   "license": "ISC",
