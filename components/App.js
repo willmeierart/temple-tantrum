@@ -43,7 +43,7 @@ class App extends Component {
     const checkWindow = () => {
       if (typeof window !== 'undefined') {
         const isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)
-        console.log(isSafari)
+        // console.log(isSafari)
         this.setState({ isSafari })
       } else {
         setTimeout(checkWindow, 500)

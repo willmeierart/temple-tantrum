@@ -48,7 +48,7 @@ class FloatyWordCanvas extends Component {
           } else {
             clearInterval(interval)
           }
-          console.log('interval firing')
+          // console.log('interval firing')
         }, 1000)
       }
     } else {

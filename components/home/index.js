@@ -30,7 +30,7 @@ class HomeWrapper extends Component {
   }
 
   render () {
-    console.log(this.props)
+    // console.log(this.props)
     const { data: { allGenerals, allHomeTextBoxes } } = this.props
     
     let socials = {}
