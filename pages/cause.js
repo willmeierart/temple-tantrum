@@ -47,13 +47,14 @@ const Cause = props => {
             margin-top: 30vh;
             flex-grow: 1;
             height: 100%;
-            font-family: Leafy;
             color: white;
+            font-family: 'Verlag-Black';
             letter-spacing: 0.125em;
             margin-bottom: 150px;
             z-index: 4;
           }
           .good-cause {
+            font-family: Leafy;
             text-align: center;
             position: absolute;
             top: 0;
@@ -99,6 +100,8 @@ const Cause = props => {
             grid-row: 3/4;
             grid-column: ${!isMobile ? '3/4' : '1/4'};
             padding: 1.5em;
+            font-size: 1.25em;
+            line-height: 1.25em;
           }
           .header {
             font-size: 1.25em;

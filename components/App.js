@@ -73,6 +73,10 @@ class App extends Component {
     if (this.props.title !== prevProps.title) {
       this.setData()
     }
+    // const sponsors = this.props.sponsors
+    // if (sponsors !== prevProps.sponsors && sponsors.length > 0) {
+    //   this.props.onSetSponsors(sponsors)
+    // }
   }
 
   toggleMenu () {
@@ -105,10 +109,10 @@ class App extends Component {
   }
 
   render () {
-    const { children, title, url, isMobile, sponsors, data: { allGenerals } } = this.props
+    const { children, title, url, isMobile, sponsors, data: { allGenerals, allSponsorses } } = this.props
     const { data: { bgColors, bgImg }, mousePos: { x, y }, menuOpen, mobileMenu, isThin } = this.state
     const gradient = `linear-gradient(${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
-    // console.log(gradient)
+    console.log(allGenerals, allSponsorses)
     // console.log(url);
     const cursorRoot = '/static/images/cursors/'
     const CURSOR = this.cursors[this.state.cursor]
@@ -136,7 +140,7 @@ class App extends Component {
           </main>
         </div>
         { !menuOpen && <footer>
-          <Footer isThin={isThin} hoverCursor={this.hoverCursor} sponsors={sponsors} />
+          <Footer isThin={isThin} hoverCursor={this.hoverCursor} sponsors={allSponsorses} />
         </footer> }
         <style jsx global>{`
           a {
@@ -192,7 +196,7 @@ class App extends Component {
             flex-grow: 1;
             width: 100%;
             min-width: 100vw;
-            min-height: 100vh;
+            min-height: 130vh;
           }
           .swoops {
             position: absolute;

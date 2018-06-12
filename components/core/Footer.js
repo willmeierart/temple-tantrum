@@ -33,6 +33,7 @@ const stockSponsors = [
 
 const Footer = ({ sponsors, hoverCursor, isThin }) => {
   const SPONSORS = sponsors && sponsors.length > 0 ? sponsors : stockSponsors
+  console.log(SPONSORS)
   const renderList = () => SPONSORS.map(sponsor => (
     <div onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} key={sponsor.name} className='link-wrapper'>
       <Link href={sponsor.link}>

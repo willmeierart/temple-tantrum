@@ -59,10 +59,10 @@ class AboutWrapper extends Component {
             <div className='header-text'>{ transformHeaderText(aboutPage.header) }</div>
             <div className='body'>{ aboutPage.description }</div>
           </div>
-          <div className='team-wrapper'>
+          {/* <div className='team-wrapper'>
             <div className='header-text'>{ transformHeaderText(aboutPage.teamSectionHeader) }</div>
             <TeamSection isThin={this.state.isThin} team={team} />
-          </div>
+          </div> */}
         </div> }
         <style jsx>{`
           .outer-wrapper{
@@ -94,7 +94,14 @@ class AboutWrapper extends Component {
             transform: rotate(-20deg);
           }
           .body {
+            column-count: 2;
             width: 80%;
+            font-family: 'Verlag-Black';
+            text-align: left;
+            {/* padding: 2em; */}
+            column-gap: 2em;
+            font-size: 1.5em;
+            line-height: 1.25em;
           }
         `}</style>
       </div>

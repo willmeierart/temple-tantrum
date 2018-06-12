@@ -18,14 +18,14 @@ class HomePage extends Component {
     // binder(this, ['renderTextBoxes'])
   }
 
-  componentDidUpdate (prevProps) {
-    const sponsors = this.props.data.allSponsorses
-    if (this.props.data) {
-      if (sponsors !== prevProps.data.allSponsorses && sponsors.length > 0) {
-        this.props.onSetSponsors(sponsors)
-      }
-    }
-  }
+  // componentDidUpdate (prevProps) {
+  //   const sponsors = this.props.data.allSponsorses
+  //   if (this.props.data) {
+  //     if (sponsors !== prevProps.data.allSponsorses && sponsors.length > 0) {
+  //       this.props.onSetSponsors(sponsors)
+  //     }
+  //   }
+  // }
 
   render () {
     return (

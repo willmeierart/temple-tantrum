@@ -101,7 +101,9 @@ class LivePage extends Component {
               width: 100%;
               display: flex;
               height: 50vw;
-              opacity: .6;
+              background-position: center!important;
+              {/* opacity: .6; */}
+              {/* z-index: 20 */}
             }
             .music-lineup {
               background: url('${conds ? allLivePages[0].musicLineup.url : ""}');
