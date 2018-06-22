@@ -3,7 +3,7 @@ import Head from 'next/head'
 // import globalStyles from '../styles/index.scss'
 
 const initialProps = {
-  title: 'Agency Zero',
+  title: "We're throwing a fit",
   initialScale: '1.0'
 }
 
