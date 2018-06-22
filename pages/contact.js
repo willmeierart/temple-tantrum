@@ -13,7 +13,7 @@ const Contact = props => {
     <AppProvider {...props} title='Contact'>
       <Head title='Contact' />
       <section>
-        <a className='volunteer' href={volunteerLink}> {'\>VOLUNTEER WITH US\<'}</a>
+        { volunteerLink && volunteerLink !== 'NONE' && <a className='volunteer' href={volunteerLink}> {'\>VOLUNTEER WITH US\<'}</a> }
         <div className='msg'>WE LOOK FORWARD TO HEARING FROM YOU!</div>
         <a href={`mailto:${email}`} target='_blank'>
           <div className='email'>
