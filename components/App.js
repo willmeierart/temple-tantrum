@@ -110,9 +110,10 @@ class App extends Component {
 
   render () {
     const { children, title, url, isMobile, sponsors, data: { allGenerals, allSponsorses } } = this.props
+    // console.log(this.props.data)
     const { data: { bgColors, bgImg }, mousePos: { x, y }, menuOpen, mobileMenu, isThin } = this.state
     const gradient = `linear-gradient(${bgColors[0]}1), ${bgColors[1]}0.75), ${bgColors[2]}0.5))`
-    console.log(allGenerals, allSponsorses)
+    // console.log(allGenerals, allSponsorses)
     // console.log(url);
     const cursorRoot = '/static/images/cursors/'
     const CURSOR = this.cursors[this.state.cursor]
@@ -130,7 +131,7 @@ class App extends Component {
           <div className='top-gradient' />
           { mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={menuOpen} /> }
           <header>
-            <Header ticketing={{ url: allGenerals ? allGenerals[0].ticketingUrl : '', avail: allGenerals ? allGenerals[0].ticketsAvailable : false }} hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
+            <Header ticketing={{ url: allGenerals ? allGenerals[0].ticketingURL : '', avail: allGenerals ? allGenerals[0].ticketsAvailable : false }} hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
           </header>
           { menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
           { url.pathname !== '/' && <div className='bg-img' /> }

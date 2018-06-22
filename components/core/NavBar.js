@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Routes from '../../server/routes'
 
 const NavBar = ({ url, hoverCursor, ticketing }) => {
+  // console.log(ticketing)
   const renderLinks = () => (
     Object.keys(Routes).reduce((list, route) => {
       const R = `/${route}`
