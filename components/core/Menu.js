@@ -48,7 +48,7 @@ const Menu = ({ hoverCursor }) => {
           width: 100vw;
           height: 100vh;
           background: #f8d147;
-          z-index: 10;
+          z-index: 11;
           
         }
         .menu-inner {
