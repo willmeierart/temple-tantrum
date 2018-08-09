@@ -70,7 +70,7 @@ const Footer = ({ sponsors, hoverCursor, isThin }) => {
           width: 100%;
           height: 100%;
           display: flex;
-          flex-direction: ${isThin ? 'column' : 'row'};
+          flex-direction: ${window.innerWidth < 1000 ? 'column' : 'row'};
           position: relative;
           justify-content: space-around;
           align-items: center;
