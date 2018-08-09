@@ -64,7 +64,7 @@ class App extends Component {
     }
     // window.addEventListener('scroll', e => { e.preventDefault() })
     window.addEventListener('resize', () => {
-      const small = window.innerWidth < 900
+      const small = window.innerWidth < 1000
       this.setState({ mobileMenu: small, menuOpen: (small && this.state.menuOpen), isThin: small })
     })
   }

@@ -1,28 +1,36 @@
 import moment from 'moment'
 
-const EventModule = ({ program, hoverCursor }) => {
+const EventModule = ({ program, hoverCursor, i }) => {
   const { dateTime, image: { url }, link, title } = program
   const formatTime = moment(dateTime).isValid()
     ? moment(dateTime).format('dddd, MMMM Do YYYY, h:mm a')
     : 'Check back later for event time'
   return (
     <div className='outer-container'>
-      <a href={link}>
-        <div className='inner-container'>
-          <div className='title'>{ title || 'Event' }</div>
-          <div className='date'>{ formatTime }</div>
-          <img src={url} />
-        </div>
+      <a href={link} className='inner-container'>
+        <img src={url} />
       </a>
+      <div className='inner-container'>
+        <div className='title'>{title || 'Event'}</div>
+        <div className='date'>{formatTime}</div>
+      </div>
       <style jsx>{`
         .outer-container {
-          width: 30vw;
-          position: relative;
+          width: 80vw;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
           color: white;
+          flex-direction: ${i % 2 === 0 ? 'row-reverse' : 'row'};
+          margin-bottom: 3em;
         }
         .inner-container {
-          width: 100%;
-          height: 100%;
+          width: 50%;
+          height: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
         }
         .title {
           font-family: leafy;

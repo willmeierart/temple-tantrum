@@ -14,7 +14,7 @@ class Programs extends Component {
     this.state = {
       filter: 'All'
     }
-    this.filters = ['All', 'Classes', 'Exhibitions', 'Talks', 'Experiences']
+    this.filters = ['All', 'Music', 'Art', 'Comedy', 'Experiences']
     this.setActiveFilter = this.setActiveFilter.bind(this)
     this.filterList = this.filterList.bind(this)
   }

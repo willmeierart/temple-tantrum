@@ -5,7 +5,7 @@ const ProgramList = ({ programs, filter, hoverCursor }) => {
     return programs.map((program, i) => {
       return (
         <div onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} key={i} className={i % 2 === 0 ? 'left module-wrapper' : 'right module-wrapper'}>
-          <EventModule hoverCursor={hoverCursor} program={program} />
+          <EventModule i={i} hoverCursor={hoverCursor} program={program} />
           <style jsx>{`
             .module-wrapper {
               display: flex;
