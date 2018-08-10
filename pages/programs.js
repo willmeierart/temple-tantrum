@@ -37,7 +37,7 @@ class Programs extends Component {
     const types = programs ? programs.map(program => program.type) : null
     return (
       <AppProvider {...this.props} title='Programs'>
-        <Head title='Temple Tantrum - Programs' />
+        <Head description="Two Full days Music, Art, Funhouse, Wrestling, Costumes, Experience and Food Trucks.  What else could you ask for?" title='Temple Tantrum - Programs' />
         <ProgramsWrapper setActiveFilter={this.setActiveFilter} filters={this.filters} filter={this.state.filter} programs={this.filterList(programs)} />
       </AppProvider>
     )

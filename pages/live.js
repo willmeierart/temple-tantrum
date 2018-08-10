@@ -23,7 +23,7 @@ class LivePage extends Component {
     
     return (
       <AppProvider {...this.props} title='Live'>
-        <Head title='Temple Tantrum - Live' />
+        <Head description="We’ve put together the tastiest lineup of local musical legends Denver has ever seen. Live acts in the day time slowly become more electronic as the sun sets and turns the Tantrum into a dance party." title='Temple Tantrum - Live' />
         { conds && <section>
           {/* <div className='page-title'>Live</div> */}
           {/* <div className='the-music'>THE MUSIC</div> */}

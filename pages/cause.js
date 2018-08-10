@@ -20,7 +20,7 @@ const Cause = props => {
   const { body, header } = cause
   return (
     <AppProvider {...props} title='Cause'>
-      <Head title='Temple Tantrum - Cause' />
+      <Head description="The Temple Tantrum Festival is all for a good Cause.  Proceeds of this Event go toward’s Platteforum to aid underserved youth through the arts, ensuring that Denver’s art scene continues to thrive for generations." title='Temple Tantrum - Cause' />
       <section>
         <div className='good-cause'>
           <div className='all-for'>ALL FOR A GOOD</div>

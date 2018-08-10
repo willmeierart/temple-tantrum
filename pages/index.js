@@ -30,7 +30,7 @@ class HomePage extends Component {
   render () {
     return (
       <AppProvider sponsors={this.state.sponsors} {...this.props} title='Home'>
-        <Head title='Temple Tantrum - Home' />
+        <Head description="The Temple Tantrum is a gritty boutique music and experiential arts festival set in Denver Colorado, September 1st and 2nd, Labor Day weekend, 2018" title='Temple Tantrum - Home' />
         <HomeWrapper {...this.props} />
       </AppProvider>
     )

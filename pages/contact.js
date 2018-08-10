@@ -11,7 +11,7 @@ const Contact = props => {
   const volunteerLink = props.data.allContactInfoes ? props.data.allContactInfoes[0].volunteerFormLink : ''
   return (
     <AppProvider {...props} title='Contact'>
-      <Head title='Temple Tantrum - Contact' />
+      <Head description="Would you like to be a part of Temple Tantrum Festival?  Do you have the volunteer spirit? Have a question?  Contact us!" title='Temple Tantrum - Contact' />
       <section>
         { volunteerLink && volunteerLink !== 'NONE' && <a className='volunteer' href={volunteerLink}> {'\>VOLUNTEER WITH US\<'}</a> }
         <div className='msg'>WE LOOK FORWARD TO HEARING FROM YOU!</div>

@@ -13,7 +13,7 @@ app.prepare()
     const server = express()
 
     sitemap({ server })
-    
+
     server.use(compression())
 
     server.use('/static', express.static('static'))
