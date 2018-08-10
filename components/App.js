@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { graphql } from 'react-apollo'
+import ReactGA from 'react-ga'
 import { checkIfMobile, getVPDims, setSponsors, hoverCursor } from '../lib/redux/actions'
 import Header from './core/Header'
 import Footer from './core/Footer'
@@ -67,6 +68,9 @@ class App extends Component {
       const small = window.innerWidth < 1000
       this.setState({ mobileMenu: small, menuOpen: (small && this.state.menuOpen), isThin: small })
     })
+
+    ReactGA.initialize('UA-123772776-1')
+    ReactGA.pageview(window.location.pathname + window.location.search)
   }
 
   componentDidUpdate (prevProps) {
