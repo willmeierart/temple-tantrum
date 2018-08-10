@@ -20,7 +20,7 @@ const Cause = props => {
   const { body, header } = cause
   return (
     <AppProvider {...props} title='Cause'>
-      <Head title='Cause' />
+      <Head title='Temple Tantrum - Cause' />
       <section>
         <div className='good-cause'>
           <div className='all-for'>ALL FOR A GOOD</div>
@@ -28,10 +28,10 @@ const Cause = props => {
         </div>
         <div className='content'>
           <div className='logo-wrapper'>
-            <img src='/static/images/logos/pforum.png' />
+            <img alt='temple tantrum fest platteforum' src='/static/images/logos/pforum.png' />
           </div>
           { !isMobile && <div className='img-wrapper'>
-            <img src='/static/images/cause-img.png' />
+            <img alt='temple tantrum fest cause' src='/static/images/cause-img.png' />
           </div> }
           <div className='txt'>
             <div className='header'>{ header }</div>

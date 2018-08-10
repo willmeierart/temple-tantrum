@@ -10,7 +10,7 @@ const EventModule = ({ program, hoverCursor, i }) => {
   return (
     <div className='outer-container'>
       <a href={link} className='inner-container'>
-        <img src={url} />
+        <img alt={`temple tantrum fest ${title || 'event'}`} src={url} />
       </a>
       <div className='inner-container'>
         <div className='title'>{title || 'Event'}</div>

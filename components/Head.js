@@ -1,25 +1,23 @@
 // literally HTML head - all SEO stuff, etc.
 import Head from 'next/head'
-// import globalStyles from '../styles/index.scss'
 
 const initialProps = {
   title: "We're throwing a fit",
-  initialScale: '1.0'
+  initialScale: '1.0',
+  description: "Temple Tantrum Fest - We're throwing a fit!"
 }
 
 const CustomHead = (props = initialProps) => {
-  const { title, initialScale } = props
+  const { title, initialScale, description } = props
   return <Head>
     <title key='title'>{title}</title>
     <meta key='charset' charSet='utf-8' />
     <meta key='viewport' name='viewport' content={`initial-scale=${initialScale || initialProps.initialScale}, width=device-width, shrink-to-fit=no`} />
     <meta key='meta-title' name='title' content='Temple Tantrum' />
-    <meta key='description' name='Description' content="Temple Tantrum Fest - We're throwing a fit!" />
+    <meta key='description' name='Description' content={description} />
     <meta name="google-site-verification" content="T_HAOmNiSb09O9WdkS2IMLf7ac7fuLjdGgHvC6EWdEA" />
-    {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
     <link rel='shortcut icon' href='/static/favicon.ico' />
     <script defer src='https://use.fontawesome.com/releases/v5.0.6/js/all.js' />
-    {/* <script async src='https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-X' /> */}
     <style dangerouslySetInnerHTML={{__html: `
       @font-face {
         font-family: 'Verlag-Black';

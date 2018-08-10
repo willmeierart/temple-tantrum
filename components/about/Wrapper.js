@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { binder } from '../../lib/_utils'
-import TeamSection from './TeamSection'
 
 class AboutWrapper extends Component {
   constructor (props) {

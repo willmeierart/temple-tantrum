@@ -140,7 +140,7 @@ class App extends Component {
           { menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
           { url.pathname !== '/' && <div className='bg-img' /> }
           <main>
-            { url.pathname === '/' && <img className='big-ol-bg' src='/static/images/backgrounds/home_img_lg.png' /> }
+            { url.pathname === '/' && <img alt='temple tantrum fest party' className='big-ol-bg' src='/static/images/backgrounds/home_img_lg.png' /> }
             {children}
           </main>
         </div>

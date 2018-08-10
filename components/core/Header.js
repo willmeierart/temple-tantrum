@@ -6,7 +6,7 @@ const Header = ({ url, mobileMenu, hoverCursor, ticketing }) => (
     <div className='header-inner'>
       <Link href='/'>
         <div className='logo-wrapper'>
-          <img onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} src='/static/images/logos/tt.png' />
+          <img alt='temple tantrum fest logo' onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} src='/static/images/logos/tt.png' />
         </div>
       </Link>
       { !mobileMenu && <NavBar ticketing={ticketing} hoverCursor={hoverCursor} url={url} /> }

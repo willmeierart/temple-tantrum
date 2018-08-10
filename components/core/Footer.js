@@ -37,7 +37,7 @@ const Footer = ({ sponsors, hoverCursor, isThin }) => {
   const renderList = () => SPONSORS.map(sponsor => (
     <div key={sponsor.logo.url} onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} className='link-wrapper'>
       <Link href={sponsor.link}>
-        <a><img src={sponsor.logo.url} alt={sponsor.name} /></a>
+        <a><img alt={`temple tantrum fest sponsor ${sponsor.name}`} src={sponsor.logo.url} alt={sponsor.name} /></a>
       </Link>
       <style jsx>{`
         .link-wrapper {

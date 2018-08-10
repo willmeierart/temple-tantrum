@@ -48,6 +48,7 @@
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
+    "sitemap": "^1.13.0",
     "traceur": "0.0.111",
     "true-random": "^1.1.1",
     "unique-random": "^2.0.0"

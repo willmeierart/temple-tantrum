@@ -30,7 +30,7 @@ class HomePage extends Component {
   render () {
     return (
       <AppProvider sponsors={this.state.sponsors} {...this.props} title='Home'>
-        <Head title='Home' />
+        <Head title='Temple Tantrum - Home' />
         <HomeWrapper {...this.props} />
       </AppProvider>
     )

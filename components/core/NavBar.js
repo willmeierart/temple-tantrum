@@ -46,7 +46,7 @@ const NavBar = ({ url, hoverCursor, ticketing }) => {
             <a href={ticketing.url}>GET TICKETS</a>
           </li>
           { !ticketing.avail && <div className='coming-soon-wrapper'>
-            <img src='/static/images/coming_soon.png' />
+            <img alt='temple tantrum fest ticketing' src='/static/images/coming_soon.png' />
           </div> }
         </ul>
       </div>

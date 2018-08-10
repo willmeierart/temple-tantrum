@@ -23,7 +23,7 @@ class LivePage extends Component {
     
     return (
       <AppProvider {...this.props} title='Live'>
-        <Head title='Live' />
+        <Head title='Temple Tantrum - Live' />
         { conds && <section>
           {/* <div className='page-title'>Live</div> */}
           {/* <div className='the-music'>THE MUSIC</div> */}

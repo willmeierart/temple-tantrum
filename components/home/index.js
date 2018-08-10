@@ -57,15 +57,6 @@ class HomeWrapper extends Component {
             <DateModule date={date} />
           </div>
           <div className='text-block-wrapper'>{allHomeTextBoxes && this.renderTextBoxes()}</div>
-          {/* <div className='img-wrapper'>
-            <img src='/static/images/home_text.png' />
-          </div> */}
-          {/* {allThings1.loading || allThings2.loading ? (
-            <div className='loader-wrapper'>
-              <Loader type='line-spin-fade-loader' active />
-            </div>
-          ) : ( */}
-          {/* )} */}
         </section>
         <style jsx>{`
           section {
