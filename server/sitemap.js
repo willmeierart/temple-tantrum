@@ -6,6 +6,8 @@ const sitemap = sm.createSitemap({
 })
 
 const setup = ({ server }) => {
+  console.log('registering sitemap')
+  
   sitemap.add({
     url: '/',
     changefreq: 'daily',
@@ -38,12 +40,12 @@ const setup = ({ server }) => {
   })
 
   server.get('/sitemap.xml', (req, res) => {
+    console.log('trying to grab sitemap')
     sitemap.toXML((err, xml) => {
       if (err) {
         res.status(500).end()
         return
       }
-
       res.header('Content-Type', 'application/xml')
       res.send(xml)
     })
