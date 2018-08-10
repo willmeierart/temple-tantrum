@@ -14,6 +14,8 @@ const CustomHead = (props = initialProps) => {
     <meta key='charset' charSet='utf-8' />
     <meta key='viewport' name='viewport' content={`initial-scale=${initialScale || initialProps.initialScale}, width=device-width, shrink-to-fit=no`} />
     <meta key='meta-title' name='title' content='Temple Tantrum' />
+    <meta key='description' name='Description' content="Temple Tantrum Fest - We're throwing a fit!" />
+    <meta name="google-site-verification" content="T_HAOmNiSb09O9WdkS2IMLf7ac7fuLjdGgHvC6EWdEA" />
     {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
     <link rel='shortcut icon' href='/static/favicon.ico' />
     <script defer src='https://use.fontawesome.com/releases/v5.0.6/js/all.js' />
