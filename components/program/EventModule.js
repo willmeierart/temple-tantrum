@@ -3,8 +3,10 @@ import moment from 'moment'
 const EventModule = ({ program, hoverCursor, i }) => {
   const { dateTime, image: { url }, link, title } = program
   const formatTime = moment(dateTime).isValid()
-    ? moment(dateTime).format('dddd, MMMM Do YYYY, h:mm a')
-    : 'Check back later for event time'
+    ? [moment(dateTime).format('dddd - MMMM Do'), moment(dateTime).format('h:mm a')]
+    : ['Check back later for event time', '']
+  const day1 = moment(dateTime).isValid() ? parseInt(moment(dateTime).format('D')) : 0
+  console.log(day1)
   return (
     <div className='outer-container'>
       <a href={link} className='inner-container'>
@@ -12,7 +14,8 @@ const EventModule = ({ program, hoverCursor, i }) => {
       </a>
       <div className='inner-container'>
         <div className='title'>{title || 'Event'}</div>
-        <div className='date'>{formatTime}</div>
+        <div className='date day'>{formatTime[0]}</div>
+        <div className='date'>{ formatTime[1] }</div>
       </div>
       <style jsx>{`
         .outer-container {
@@ -23,6 +26,7 @@ const EventModule = ({ program, hoverCursor, i }) => {
           color: white;
           flex-direction: ${i % 2 === 0 ? 'row-reverse' : 'row'};
           margin-bottom: 3em;
+          font-family: leafy;
         }
         .inner-container {
           width: 50%;
@@ -31,14 +35,23 @@ const EventModule = ({ program, hoverCursor, i }) => {
           align-items: center;
           justify-content: center;
           flex-direction: column;
+          text-align: center;
+          flex-wrap: nowrap;
         }
         .title {
-          font-family: leafy;
-          font-size: 2em;
+          font-size: 5vw;
           letter-spacing: .05em;
+        }
+        .date {
+          font-size: 3vw;
+          white-space: nowrap;
+        }
+        .day {
+          color: ${day1 === 1 ? '#689cb3' : 'white'};
         }
         img {
           max-width: 30vw;
+          margin: 0 4vw;
         }
       `}</style>
     </div>

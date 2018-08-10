@@ -1,8 +1,25 @@
 import EventModule from './EventModule'
+import moment from 'moment'
+
+const formatTime = program => {
+  const { dateTime } = program
+  const momentVal = moment(dateTime).isValid() ? moment(dateTime).format('h:mm').split(':') : [-100, -100]
+  const amPm = moment(dateTime).format('a').toLowerCase()
+  if (moment(dateTime).isValid() && ((momentVal[0] === '12' && amPm.indexOf('a') !== -1) || amPm.indexOf('p') !== -1)) {
+    momentVal[0] = momentVal[0] + 12
+  }
+  return momentVal
+}
 
 const ProgramList = ({ programs, filter, hoverCursor }) => {
   const renderMany = () => {
-    return programs.map((program, i) => {
+    return programs.sort((a, b) => {
+      if (formatTime(a)[0] === formatTime(b)[0]) {
+        return formatTime(b)[1] - formatTime(a)[1]
+      } else {
+        return formatTime(b)[0] - formatTime(a)[0]
+      }
+    }).map((program, i) => {
       return (
         <div onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} key={i} className={i % 2 === 0 ? 'left module-wrapper' : 'right module-wrapper'}>
           <EventModule i={i} hoverCursor={hoverCursor} program={program} />
