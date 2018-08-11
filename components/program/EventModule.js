@@ -1,11 +1,12 @@
 import moment from 'moment'
 
 const EventModule = ({ program, hoverCursor, i }) => {
-  const { dateTime, image: { url }, link, title } = program
-  const formatTime = moment(dateTime).isValid()
+  const { dateTime, image: { url }, link, title, timeVisibility } = program
+  const formatTime = moment(dateTime).isValid() && timeVisibility
     ? [moment(dateTime).format('dddd - MMMM Do'), moment(dateTime).format('h:mm a')]
     : ['Check back later for event time', '']
-  const day1 = moment(dateTime).isValid() ? parseInt(moment(dateTime).format('D')) : 0
+  let day1 = moment(dateTime).isValid() ? parseInt(moment(dateTime).format('D')) : 0
+  if (!timeVisibility) day1 = 1
   console.log(day1)
   return (
     <div className='outer-container'>
@@ -47,7 +48,7 @@ const EventModule = ({ program, hoverCursor, i }) => {
           white-space: nowrap;
         }
         .day {
-          color: ${day1 === 1 ? '#689cb3' : 'white'};
+          color: ${day1 === 1 ? '#689cb3' : 'black'};
         }
         img {
           max-width: 30vw;

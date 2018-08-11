@@ -34,6 +34,7 @@ class App extends Component {
       cursorHover: false,
       isThin: false,
       isSafari: false
+      // footerFromTop: 'calc(100vh - )'
     }
     binder(this, ['setData', 'updateCursorOnScroll', 'toggleMenu', 'hoverCursor'])
     this.cursors = ['Eyeball.png', 'Fire.png', 'Mario.png', 'PointerDude.png', 'RainbowTail.png', 'Strawberry.png', 'anarchy.png', 'banana.gif', 'dragon.png', 'gauntlet.png', 'lightsaber.gif', 'partyhat.png', 'skull.gif', 'smiley.gif', 'spaceship.gif']
@@ -160,6 +161,9 @@ class App extends Component {
             background-repeat: no-repeat;
             background-size: contain;
           }
+          html {
+            overflow-x: hidden;
+          }
           body {
             box-sizing: border-box;
             margin: 0;
@@ -168,6 +172,7 @@ class App extends Component {
             overflow: ${menuOpen ? 'hidden' : 'auto'};
             font-family: sans-serif;
             width: 100vw;
+            min-height:100vh;
             height: ${menuOpen ? '100vh' : '100%'};
             position: relative;
           }
@@ -193,7 +198,8 @@ class App extends Component {
             min-height: 100vh;
             min-width: 100vw;
             box-sizing: border-box;
-            overflow: hidden;
+            position: relative;
+            overflow-x: hidden;
           }
           .app-inner {
             display: flex;
@@ -202,6 +208,8 @@ class App extends Component {
             width: 100%;
             min-width: 100vw;
             min-height: 130vh;
+            height: 100%;
+            overflow-x: hidden;
           }
           .swoops {
             position: absolute;

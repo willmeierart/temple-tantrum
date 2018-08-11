@@ -13,13 +13,13 @@ const formatTime = program => {
 
 const ProgramList = ({ programs, filter, hoverCursor }) => {
   const renderMany = () => {
-    return programs.sort((a, b) => {
+    return programs.filter(p => p.timeVisibility).sort((a, b) => {
       if (formatTime(a)[0] === formatTime(b)[0]) {
         return formatTime(b)[1] - formatTime(a)[1]
       } else {
         return formatTime(b)[0] - formatTime(a)[0]
       }
-    }).map((program, i) => {
+    }).concat(programs.filter(p => !p.timeVisibility)).map((program, i) => {
       return (
         <div onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} key={i} className={i % 2 === 0 ? 'left module-wrapper' : 'right module-wrapper'}>
           <EventModule i={i} hoverCursor={hoverCursor} program={program} />
