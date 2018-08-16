@@ -34,10 +34,14 @@ class Programs extends Component {
   render () {
     const { data, url } = this.props
     const programs = data.allProgramses
+    const allGenerals = data.allGenerals
+    console.log(allGenerals)
     const types = programs ? programs.map(program => program.type) : null
+    const pageDescription = typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined' ? allGenerals[0].programsPageDescription : null
+    const pageTitle = typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined' ? allGenerals[0].programsPageTitle : null
     return (
       <AppProvider {...this.props} title='Programs'>
-        <Head description="Two Full days Music, Art, Funhouse, Wrestling, Costumes, Experience and Food Trucks.  What else could you ask for?" title='Temple Tantrum - Programs' />
+        <Head description={pageDescription || "Two Full days Music, Art, Funhouse, Wrestling, Costumes, Experience and Food Trucks.  What else could you ask for?"} title={pageTitle || 'Temple Tantrum - Programs'} />
         <ProgramsWrapper setActiveFilter={this.setActiveFilter} filters={this.filters} filter={this.state.filter} programs={this.filterList(programs)} />
       </AppProvider>
     )

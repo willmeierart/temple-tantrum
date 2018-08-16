@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Head from '../Head'
 import { binder } from '../../lib/_utils'
 
 class AboutWrapper extends Component {
@@ -28,11 +29,11 @@ class AboutWrapper extends Component {
 
   renderTextModules () {
     const aboutPage = this.props.data.allAboutPages ? this.props.data.allAboutPages : []
-    console.log('renderTM', aboutPage)
+    // console.log('renderTM', aboutPage)
     return aboutPage.map(sec => {
       const { header, description } = sec
       return (
-        <div className='wrapper'>
+        <div key={sec.header} className='wrapper'>
           <div className='header-text'>{ header }</div>
           <div className='body-text'>{ description }</div>
           <style jsx>{`
@@ -58,8 +59,15 @@ class AboutWrapper extends Component {
   }
 
   render () {
+    console.log(this.props.data)
+    const aboutPage = this.props.data.allAboutPages ? this.props.data.allAboutPages : []
+    const headContent = this.props.data.allGenerals ? this.props.data.allGenerals[0] : { aboutPageTitle: null, aboutPageDescription: null }
+    const { aboutPageTitle, aboutPageDescription } = headContent
     return (
       <div className='outer-wrapper'>
+        <Head
+          description={aboutPageDescription || "Temple Tantrum Festival takes place on Labor Day weekend, Sept 1-2 in Denver’s Rino District, to celebrate the weirder side of Denver."}
+          title={aboutPageTitle || 'Temple Tantrum - About'} /> 
         { this.props.data.allAboutPages && <div className='inner-wrapper'>{ this.renderTextModules() }</div> }
         <style jsx>{`
           .outer-wrapper{

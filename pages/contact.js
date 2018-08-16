@@ -9,9 +9,11 @@ const Contact = props => {
   const splitEmail = email.split('').map((l, i) => <span key={i}>{ l }</span>)
   console.log(props)
   const volunteerLink = props.data.allContactInfoes ? props.data.allContactInfoes[0].volunteerFormLink : ''
+  const pageDescription = props.data.allContactInfoes ? props.data.allContactInfoes[0].pageDescription : null
+  const pageTitle = props.data.allContactInfoes ? props.data.allContactInfoes[0].pageTitle : null
   return (
     <AppProvider {...props} title='Contact'>
-      <Head description="Would you like to be a part of Temple Tantrum Festival?  Do you have the volunteer spirit? Have a question?  Contact us!" title='Temple Tantrum - Contact' />
+      <Head description={pageDescription || "Would you like to be a part of Temple Tantrum Festival?  Do you have the volunteer spirit? Have a question?  Contact us!"} title={pageTitle || 'Temple Tantrum - Contact'} />
       <section>
         { volunteerLink && volunteerLink !== 'NONE' && <a className='volunteer' href={volunteerLink}> {'\>VOLUNTEER WITH US\<'}</a> }
         <div className='msg'>WE LOOK FORWARD TO HEARING FROM YOU!</div>

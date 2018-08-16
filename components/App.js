@@ -136,7 +136,7 @@ class App extends Component {
           <div className='top-gradient' />
           { mobileMenu && <MenuButton hoverCursor={this.hoverCursor} toggle={this.toggleMenu} menuOpen={menuOpen} /> }
           <header>
-            <Header ticketing={{ url: allGenerals ? allGenerals[0].ticketingURL : '', avail: allGenerals ? allGenerals[0].ticketsAvailable : false }} hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
+            <Header showLive={allGenerals ? allGenerals[0].livePageShouldShow : false} ticketing={{ url: allGenerals ? allGenerals[0].ticketingURL : '', avail: allGenerals ? allGenerals[0].ticketsAvailable : false }} hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
           </header>
           { menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
           { url.pathname !== '/' && <div className='bg-img' /> }

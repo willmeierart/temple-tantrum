@@ -16,11 +16,11 @@ const Cause = props => {
     }
   }
   checkIfMobile()
-  const cause = props.data.allCausePages ? props.data.allCausePages[0] : { body: '<div/>', header: '' }
-  const { body, header } = cause
+  const cause = props.data.allCausePages ? props.data.allCausePages[0] : { body: '<div/>', header: '', pageTitle: null, pageDescription: null }
+  const { body, header, pageTitle, pageDescription } = cause
   return (
     <AppProvider {...props} title='Cause'>
-      <Head description="The Temple Tantrum Festival is all for a good Cause.  Proceeds of this Event go toward’s Platteforum to aid underserved youth through the arts, ensuring that Denver’s art scene continues to thrive for generations." title='Temple Tantrum - Cause' />
+      <Head description={pageDescription || "The Temple Tantrum Festival is all for a good Cause.  Proceeds of this Event go toward’s Platteforum to aid underserved youth through the arts, ensuring that Denver’s art scene continues to thrive for generations."} title={pageTitle || 'Temple Tantrum - Cause'} />
       <section>
         <div className='good-cause'>
           <div className='all-for'>ALL FOR A GOOD</div>

@@ -3,6 +3,7 @@ import moment from 'moment'
 import Socials from './Socials'
 import DateModule from './DateModule'
 import HomeTextBox from './HomeTextBox'
+import Head from '../Head'
 import { hoverCursor } from '../../lib/redux/actions'
 import { connect } from 'react-redux'
 import { binder } from '../../lib/_utils'
@@ -47,8 +48,13 @@ class HomeWrapper extends Component {
       date.start = moment(general.day1Time).format('MMM D')
       date.end = moment(general.day2Time).format('D YYYY')
     }
+
+    const pageDescription = typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined' ? allGenerals[0].homepageDescription : null
+    const pageTitle = typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined' ? allGenerals[0].homepageTitle : null
+
     return (
       <div>
+        <Head description={pageDescription || "The Temple Tantrum is a gritty boutique music and experiential arts festival set in Denver Colorado, September 1st and 2nd, Labor Day weekend, 2018"} title={pageTitle || 'Temple Tantrum - Home'} />
         <section>
           <div className='socials-wrapper'>
             <Socials socials={socials} hoverCursor={this.props.onHoverCursor} />

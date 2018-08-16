@@ -20,10 +20,13 @@ class LivePage extends Component {
       date.start = moment(general.day1Time).format('MMM Do')
       date.end = moment(general.day2Time).format('MMM Do')
     }
+
+    const pageDescription = typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined' ? allGenerals[0].livePageDescription : null
+    const pageTitle = typeof allGenerals !== 'undefined' && typeof allGenerals[0] !== 'undefined' ? allGenerals[0].livePageTitle : null
     
     return (
       <AppProvider {...this.props} title='Live'>
-        <Head description="We’ve put together the tastiest lineup of local musical legends Denver has ever seen. Live acts in the day time slowly become more electronic as the sun sets and turns the Tantrum into a dance party." title='Temple Tantrum - Live' />
+        <Head description={pageDescription || "We’ve put together the tastiest lineup of local musical legends Denver has ever seen. Live acts in the day time slowly become more electronic as the sun sets and turns the Tantrum into a dance party."} title={pageTitle || 'Temple Tantrum - Live'} />
         { conds && <section>
           {/* <div className='page-title'>Live</div> */}
           {/* <div className='the-music'>THE MUSIC</div> */}

@@ -5,7 +5,6 @@ import { homePage } from '../lib/queries'
 import { binder } from '../lib/_utils'
 import React, { Component } from 'react'
 import AppProvider from '../lib/redux/AppProvider'
-import Head from '../components/Head'
 import HomeWrapper from '../components/home'
 
 // include boilerplate for global loader dependent on graphql req's:
@@ -30,7 +29,6 @@ class HomePage extends Component {
   render () {
     return (
       <AppProvider sponsors={this.state.sponsors} {...this.props} title='Home'>
-        <Head description="The Temple Tantrum is a gritty boutique music and experiential arts festival set in Denver Colorado, September 1st and 2nd, Labor Day weekend, 2018" title='Temple Tantrum - Home' />
         <HomeWrapper {...this.props} />
       </AppProvider>
     )

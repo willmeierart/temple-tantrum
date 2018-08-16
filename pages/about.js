@@ -12,7 +12,6 @@ class About extends Component {
   render () {
     return (
       <AppProvider {...this.props} title='About'>
-        <Head description="Temple Tantrum Festival takes place on Labor Day weekend, Sept 1-2 in Denver’s Rino District, to celebrate the weirder side of Denver." title='Temple Tantrum - About' />
         <section>
           <AboutWrapper data={this.props.data} />
         </section>

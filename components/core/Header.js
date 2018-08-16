@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import NavBar from './NavBar'
 
-const Header = ({ url, mobileMenu, hoverCursor, ticketing }) => (
+const Header = ({ url, mobileMenu, hoverCursor, ticketing, showLive }) => (
   <div className='header-outer'>
     <div className='header-inner'>
       <Link href='/'>
@@ -9,7 +9,7 @@ const Header = ({ url, mobileMenu, hoverCursor, ticketing }) => (
           <img alt='temple tantrum fest logo' onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} src='/static/images/logos/tt.png' />
         </div>
       </Link>
-      { !mobileMenu && <NavBar ticketing={ticketing} hoverCursor={hoverCursor} url={url} /> }
+      { !mobileMenu && <NavBar showLive={showLive} ticketing={ticketing} hoverCursor={hoverCursor} url={url} /> }
       
     </div>
     <style jsx>{`

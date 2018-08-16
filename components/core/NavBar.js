@@ -1,38 +1,40 @@
 import Link from 'next/link'
 import Routes from '../../server/routes'
 
-const NavBar = ({ url, hoverCursor, ticketing }) => {
+const NavBar = ({ url, hoverCursor, ticketing, showLive }) => {
   // console.log(ticketing)
   const renderLinks = () => (
     Object.keys(Routes).reduce((list, route) => {
       const R = `/${route}`
       const active = (route === url.asPath.replace('/', ''))
       if (route !== 'home') {
-        list.push(
-          <li onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} key={route}>
-            <Link href={R}>
-              <a>{route.toUpperCase()}</a>
-            </Link>
-            <style jsx>{`
-              li {
-                color: white;
-                font-size: .5em;
-                font-family: 'Verlag-Book';
-                letter-spacing: .2em;
-                margin: 0 2em;
-                text-align: center;
-                text-align: center;
-                line-height: 1.25em;
-                padding: .25em;
-                {/* text-decoration: ${active ? 'underline' : 'none'}; */}
-                border-bottom: ${active ? '1px solid white' : 'none'}
-              }
-              a {
-                
-              }
-            `}</style>
-          </li>
-        )
+        if (route !== 'live' || (route === 'live' && showLive)) {
+          list.push(
+            <li onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} key={route}>
+              <Link href={R}>
+                <a>{route.toUpperCase()}</a>
+              </Link>
+              <style jsx>{`
+                li {
+                  color: white;
+                  font-size: .5em;
+                  font-family: 'Verlag-Book';
+                  letter-spacing: .2em;
+                  margin: 0 2em;
+                  text-align: center;
+                  text-align: center;
+                  line-height: 1.25em;
+                  padding: .25em;
+                  {/* text-decoration: ${active ? 'underline' : 'none'}; */}
+                  border-bottom: ${active ? '1px solid white' : 'none'}
+                }
+                a {
+                  
+                }
+              `}</style>
+            </li>
+          )
+        }
       }
       return list
     }, [])
