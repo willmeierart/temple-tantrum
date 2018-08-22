@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 const DateModule = ({ date }) => {
-  // console.log(date);
+  console.log(date);
   return (
     <div className='outer-container'>
       <div className='inner-container'>

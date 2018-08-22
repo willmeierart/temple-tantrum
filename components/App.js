@@ -66,7 +66,7 @@ class App extends Component {
     }
     // window.addEventListener('scroll', e => { e.preventDefault() })
     window.addEventListener('resize', () => {
-      const small = window.innerWidth < 1000
+      const small = window.innerWidth < 1200
       this.setState({ mobileMenu: small, menuOpen: (small && this.state.menuOpen), isThin: small })
     })
 
@@ -163,8 +163,8 @@ class App extends Component {
           }
           html {
             overflow-x: hidden;
-            overflow: ${menuOpen ? 'hidden' : 'auto'};
-            height: ${menuOpen ? '100vh' : '100%'};
+            // overflow: ${menuOpen ? 'hidden' : 'auto'};
+            // height: ${menuOpen ? '100vh' : '100%'};
           }
           body {
             box-sizing: border-box;
@@ -211,7 +211,7 @@ class App extends Component {
             width: 100%;
             min-width: 100vw;
             min-height: ${!menuOpen && '130vh'};
-            height: ${menuOpen ? '100vh' : '100%'};
+            height: ${menuOpen && '100vh'};
             overflow-x: hidden;
             overflow: ${menuOpen ? 'hidden' : 'auto'};
           }

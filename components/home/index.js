@@ -31,7 +31,7 @@ class HomeWrapper extends Component {
   }
 
   render () {
-    // console.log(this.props)
+    console.log(this.props)
     const { data: { allGenerals, allHomeTextBoxes } } = this.props
     
     let socials = {}
@@ -97,20 +97,20 @@ class HomeWrapper extends Component {
             z-index: 10;
             margin-bottom: 40vw;
           }
-          @media screen and (max-width: 1000px) {
+          @media screen and (max-width: 1200px) {
             .socials-wrapper, .date-wrapper {
               top: -70vh;
               right: 5vw;
             }
           }
-          @media screen and (min-width: 1500px) and (max-width: 1700px) {
+          @media screen and (min-width: 1200px) and (max-width: 1350px) {
             .socials-wrapper, .date-wrapper {
-              top: -120vh;
+              top: -90vh;
             }
           }
-          @media screen and (min-width: 1700px) {
+          @media screen and (min-width: 1500px) {
             .socials-wrapper, .date-wrapper {
-              top: -150vh;
+              top: -120vh;
             }
           }
         `}</style>
