@@ -10,7 +10,6 @@ const Header = ({ url, mobileMenu, hoverCursor, ticketing, showLive }) => (
         </div>
       </Link>
       { !mobileMenu && <NavBar showLive={showLive} ticketing={ticketing} hoverCursor={hoverCursor} url={url} /> }
-      
     </div>
     <style jsx>{`
       .header-outer {

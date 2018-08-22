@@ -1,7 +1,7 @@
 import Routes from '../../server/routes'
 import Link from 'next/link'
 
-const Menu = ({ hoverCursor }) => {
+const Menu = ({ hoverCursor, ticketing }) => {
   const renderList = () =>
     Object.keys(Routes).map((route, i) => {
       const R = route === 'home' ? '/' : `/${route}`
@@ -25,11 +25,9 @@ const Menu = ({ hoverCursor }) => {
               flex-grow: 1;
               line-height: 1.25em;
               padding: .25em;
-              border-bottom: ${i !== Object.keys(Routes).length - 1 ? '1px solid white' : 'none'};
+              border-bottom: 1px solid white;
+              // border-bottom: ${i !== Object.keys(Routes).length - 1 ? '1px solid white' : 'none'};
               width: 100vw;
-            }
-            a {
-              
             }
           `}</style>
         </li>
@@ -38,7 +36,12 @@ const Menu = ({ hoverCursor }) => {
   return (
     <div className='menu-outer'>
       <div className='menu-inner'>
-        <ul>{ renderList() }</ul>
+        <ul>
+          { renderList() }
+          <li onMouseEnter={() => { hoverCursor(true) }} onMouseLeave={() => { hoverCursor(false) }} className='get-tickets'>
+            <a href={ticketing.url}>GET TICKETS</a>
+          </li>
+        </ul>
       </div>
       <style jsx>{`
         .menu-outer {
@@ -65,6 +68,22 @@ const Menu = ({ hoverCursor }) => {
           height: 100%;
           padding: 0;
         }
+        li {
+              color: white;
+              font-size: 2em;
+              font-family: 'Verlag-Book';
+              letter-spacing: .2em;
+              margin: 0 2em;
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              flex-grow: 1;
+              line-height: 1.25em;
+              padding: .25em;
+              width: 100vw;
+            }
       `}</style>
     </div>
   )

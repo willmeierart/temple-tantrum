@@ -138,7 +138,7 @@ class App extends Component {
           <header>
             <Header showLive={allGenerals ? allGenerals[0].livePageShouldShow : false} ticketing={{ url: allGenerals ? allGenerals[0].ticketingURL : '', avail: allGenerals ? allGenerals[0].ticketsAvailable : false }} hoverCursor={this.hoverCursor} mobileMenu={mobileMenu} url={url} />
           </header>
-          { menuOpen && <Menu hoverCursor={this.hoverCursor} /> }
+          { menuOpen && <Menu hoverCursor={this.hoverCursor} ticketing={{ url: allGenerals ? allGenerals[0].ticketingURL : '', avail: allGenerals ? allGenerals[0].ticketsAvailable : false }} /> }
           { url.pathname !== '/' && <div className='bg-img' /> }
           <main>
             { url.pathname === '/' && <img alt='temple tantrum fest party' className='big-ol-bg' src='/static/images/backgrounds/home_img_lg.png' /> }
@@ -163,6 +163,8 @@ class App extends Component {
           }
           html {
             overflow-x: hidden;
+            overflow: ${menuOpen ? 'hidden' : 'auto'};
+            height: ${menuOpen ? '100vh' : '100%'};
           }
           body {
             box-sizing: border-box;
@@ -189,17 +191,18 @@ class App extends Component {
           main {
             z-index: 4;
             top: 0;
-            height: 100%;
+            height: ${menuOpen ? '100vh' : '100%'};
             width: 100%;
           }
           .app-outer {
             width: 100%;
-            height: 100%;
+            height: ${menuOpen ? '100vh' : '100%'};
             min-height: 100vh;
             min-width: 100vw;
             box-sizing: border-box;
             position: relative;
             overflow-x: hidden;
+            overflow: ${menuOpen ? 'hidden' : 'auto'};
           }
           .app-inner {
             display: flex;
@@ -207,9 +210,10 @@ class App extends Component {
             flex-grow: 1;
             width: 100%;
             min-width: 100vw;
-            min-height: 130vh;
-            height: 100%;
+            min-height: ${!menuOpen && '130vh'};
+            height: ${menuOpen ? '100vh' : '100%'};
             overflow-x: hidden;
+            overflow: ${menuOpen ? 'hidden' : 'auto'};
           }
           .swoops {
             position: absolute;
@@ -230,6 +234,7 @@ class App extends Component {
             left: 0;
             right: 0;
             z-index: ${title === 'Home' ? 2 : 3};
+            height: ${menuOpen ? '100vh' : '100%'};
           }
           .bg-img {
             height: 100vh;
